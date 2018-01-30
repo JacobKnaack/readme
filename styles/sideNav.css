@@ -1,0 +1,13 @@
+.navContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.portrait {
+  width: calc(100% - 20px);
+  padding: 10px;
+}
+
+.description {
+  font-size: 90%;
+}

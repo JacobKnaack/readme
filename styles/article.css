@@ -1,0 +1,47 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+p {
+  font-family: 'Oxygen Mono', monospace;
+}
+
+.heading {
+  height: 200px;
+  padding: 20px 0;
+}
+
+#articleText p {
+  font-family: 'Playfair Display', serif;
+  font-size: 110%;
+  line-height: 25px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+#articleText .subtitle {
+  text-align: center;
+  width: 70%;
+  margin: 10px auto 30px auto;
+  line-height: 30px;
+  font-size: 120%;
+}
+
+.articleList {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#sideNav {
+  position: fixed;
+  width: 200px;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+#articleContent {
+  position: relative;
+  left: 200px;
+  width: calc(100vw - 200px);
+}
