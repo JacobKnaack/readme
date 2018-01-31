@@ -31,7 +31,7 @@ const url = window.location.href;
 let queryString = url.substring(url.indexOf('?') + 4);
 
 for ( var item in articles) {
-  if (url.includes('index')) {
+  if (!url.includes('article')) {
     document.getElementById("submissions").innerHTML += "<li class='indexListItem'><a id='article" + articles[item].id + "' class='listAnchor' href='/template/article.html?id=" + articles[item].id + "'><i class='fa fa-html5 indexListImg' class aria-hidden='true'></i>"+articles[item].name+"</a></li>"
   }
   if (url.includes('article') && parseInt(queryString) === articles[item].id) {
