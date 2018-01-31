@@ -32,7 +32,7 @@ let queryString = url.substring(url.indexOf('?') + 4);
 
 for ( var item in articles) {
   if (document.getElementById("submissions")) {
-    document.getElementById("submissions").innerHTML += "<li class='indexListItem'><a id='article" + articles[item].id + "' class='listAnchor' href='/template/article.html?id=" + articles[item].id + "'><i class='fa fa-html5 indexListImg' class aria-hidden='true'></i>"+articles[item].name+"</a></li>"
+    document.getElementById("submissions").innerHTML += "<li class='indexListItem'><a id='article" + articles[item].id + "' class='listAnchor' href='"+url+"template/article.html?id=" + articles[item].id + "'><i class='fa fa-html5 indexListImg' class aria-hidden='true'></i>"+articles[item].name+"</a></li>"
   }
   if (url.includes('article') && parseInt(queryString) === articles[item].id) {
     document.getElementById('articleTitle').innerHTML = articles[item].name;
