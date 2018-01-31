@@ -6,6 +6,10 @@ p {
   font-family: 'Oxygen Mono', monospace;
 }
 
+code {
+  background-color: #e3e3e3;
+}
+
 .heading {
   height: 200px;
   padding: 20px 0;
@@ -15,7 +19,7 @@ p {
 }
 
 #articleTitle, #createdOn {
-  width: 60%;
+  width: calc(90% - 50px);
   margin: 0 auto 0 50px;
 }
 
@@ -25,6 +29,14 @@ p {
   line-height: 30px;
   width: 80%;
   margin: 20px auto;
+}
+
+#articleText ul {
+  list-style-type: none;
+}
+
+#articleText {
+ margin-bottom: 100px; 
 }
 
 #articleText .subtitle {
@@ -42,9 +54,9 @@ p {
 }
 
 .textNumbers {
-  margin: 5px auto !important;
+  margin: 15px auto !important;
   width: 60% !important;
-  text-indent: -20px;
+  text-indent: -18px;
 }
 
 .contentHeading {
@@ -79,4 +91,11 @@ p {
   position: relative;
   left: 200px;
   width: calc(100vw - 200px);
+}
+
+.codeBlock {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding: 5px;
 }
