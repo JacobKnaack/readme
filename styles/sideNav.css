@@ -1,0 +1,22 @@
+.navContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.portrait {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.description {
+  font-size: 90%;
+  padding: 0 10px;
+}
+
+.homeBtn {
+  display: block;
+  font-size: 200%;
+  color: #7EAFA5;
+  text-align: center;
+}

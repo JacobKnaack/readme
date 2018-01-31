@@ -1,0 +1,53 @@
+html, body {
+  width: 100vw;
+  margin: 0;
+  background-color: #7EAFA5;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+p {
+  font-family: 'Oxygen Mono', monospace;
+}
+
+#home-container {
+  width: 100%;
+}
+
+.heading {
+  text-align: center;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+#submissionList {
+  width:80%;
+  margin: 0 auto;
+}
+
+.indexListItem {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.listAnchor {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.indexListImg {
+  height: 50px;
+}
+
+a {
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace; 
+  color: #FB98FC;
+  font-size: 150%;
+  text-align: center;
+}
