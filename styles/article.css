@@ -1,3 +1,8 @@
+html, body {
+  width: 100vw;
+  margin: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Share Tech Mono', monospace;
 }
@@ -70,6 +75,7 @@ code {
 .contentImg {
   display: block;
   margin: 0 auto;
+  max-width: 100%
 }
 
 .divider {
@@ -93,9 +99,21 @@ code {
   width: calc(100vw - 200px);
 }
 
+code {
+  font-size: 130%;
+  border-radius: 5px;
+}
+
 .codeBlock {
   display: block;
   width: 80%;
   margin: 0 auto;
-  padding: 5px;
+  padding: 10px;
+}
+
+@media (max-width: 750px) {
+  #articleContent {
+    left: 0;
+    width: 100vw !important;
+  }
 }

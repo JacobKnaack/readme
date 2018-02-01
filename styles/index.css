@@ -3,6 +3,13 @@ html, body {
   margin: 0;
   background-color: #7EAFA5;
 }
+
+.displayName {
+  font-family: 'Bungee Hairline', cursive;
+  font-size: 200%;
+  height: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Share Tech Mono', monospace;
 }
@@ -24,9 +31,18 @@ p {
   background-color: #ffffff;
 }
 
+.heading h1 {
+  height: 75px;
+  line-height: 75px;
+}
+
 #submissionList {
   width:80%;
   margin: 0 auto;
+}
+
+#submissions {
+  margin-top: 50px;
 }
 
 .indexListItem {
@@ -45,10 +61,20 @@ p {
   margin-right: 10px;
 }
 
+#meLink {
+  color: #FCB1FC;
+}
+
 a {
   text-decoration: none;
   font-family: 'Share Tech Mono', monospace; 
-  color: #FB98FC;
+  color: #ffffff;
   font-size: 150%;
-  text-align: center;
+  text-align: left;
+}
+
+.articleDescription {
+  width: 80%;
+  margin-top: 2px;
+  padding-left: 40px;
 }

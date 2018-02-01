@@ -16,7 +16,18 @@
 
 .homeBtn {
   display: block;
-  font-size: 200%;
+  font-size: 120%;
   color: #7EAFA5;
+  width: 80%;
+  margin: 50px auto 0 auto;
   text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+@media (max-width: 750px) {
+  .portrait {
+    width: auto;
+    height: 50px;
+    border-radius: 70px;
+  }
 }
