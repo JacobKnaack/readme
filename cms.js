@@ -132,13 +132,19 @@ const articles = [
             }</code>\
             <p>We should end up with three section taking up all of our browser window, the messageList and messageInput will appear pretty black, but there should be a subtle border between them :</p>\
             <img class='screenshot' src='../asset/screenshots/1/finishedLayout.png'>\
-            <p>Let's look at our CSS and talk about what\'s going on:</p>\
+            <p>Let's look at our CSS and talk about some import parts that make our layout appear the way it does:</p>\
             <code class='codeBlock prettyprint linenums:8'>\
             &nbsp position: relative;</code>\
             <p class='codeComment larger'>this line gives our conversations element a positioning relative to it\'s normal position.  This way we can give it top, right, bottom, and left css commands which will adjust the positioning of the <em>away</em> from its normal position.</p>\
             <code class='codeBlock prettyprint linenums:14'>\
             &nbsp float: left;</code>\
-            <p class='codeComment larger'>Giving the element a styling of float: left will allow the element to lineup to the left of the preceding element.  By adding this to the conversations CSS block, we are telling it to appear on the left side of whatever element comes after.</p>"
+            <p class='codeComment larger'>Giving the element a styling of float: left will allow the element to be positioned to the left of the preceding element.  By adding this to the conversations CSS block, we are telling the conversations div to appear on the left side of whatever element comes after, in this case: the messageContainer. Without this stlyling command, the messaageContainer would appear below the conversations div.</p>\
+            <code class='codeBlock prettyprint linenums:21'>\
+            &nbsp width: calc(100% - 200px);</code>\
+            <p class='codeComment larger'>Here we are telling the messageContainer to have a width that is equal to the 100% of its <em>parent</em> container minus 200px, calc() is an actual CSS function that lets you perform calculations with CSS values. In this case it's the body element which we've given a width of 100vw (vw stands for view-width) minus the 200px for the width of the conversations div.</p>\
+            <p>That pretty much covers the structure of our project. On to mocking some data and using some javascript to add that content to our HTML.</p>\
+            <div class='divider'></div>\
+            <h3 class='contentHeading'>Adding Mocked Data and Talking to our HTML with Javascript</h3>"
   },
 ];
 
