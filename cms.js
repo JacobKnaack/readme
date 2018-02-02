@@ -65,6 +65,8 @@ const articles = [
             <h4 class='codeTitle'>style.css</h4>\
             <code class='codeBlock prettyprint linenums'>\
             body, html {<br>\
+            &nbsp height: 100vh;<br>\
+            &nbsp width: 100vw;<br>\
             &nbsp margin: 0;<br>\
             }<br><br>\
             .conversations {<br>\
@@ -75,7 +77,7 @@ const articles = [
             &nbsp height: 100vh;<br>\
             &nbsp background-color: #E9E8F8;<br>\
             }</code>\
-            <p class='codeComment'><em>// The first two lines take away any default margin given to the html and body elements</em></p>\
+            <p class='codeComment'><em>// The first CSS block takes away any default margin given to the html and body elements, as well as gives them a width and a height the same size as the Browser window.</em></p>\
             <p>Let\'s test this out by adding a line to our <strong>index.html</strong> file so that it looks for our css file:</p>\
             <h4 class='codeTitle'>index.html</h4>\
             <code class='codeBlock prettyprint linenums:3'>\
@@ -132,7 +134,7 @@ const articles = [
             }</code>\
             <p>We should end up with three section taking up all of our browser window, the messageList and messageInput will appear pretty black, but there should be a subtle border between them :</p>\
             <img class='screenshot' src='../asset/screenshots/1/finishedLayout.png'>\
-            <p>Let's look at our CSS and talk about some import parts that make our layout appear the way it does:</p>\
+            <p>Let's look at our CSS and talk about some important parts that make our layout appear the way it does:</p>\
             <code class='codeBlock prettyprint linenums:8'>\
             &nbsp position: relative;</code>\
             <p class='codeComment larger'>this line gives our conversations element a positioning relative to it\'s normal position.  This way we can give it top, right, bottom, and left css commands which will adjust the positioning of the <em>away</em> from its normal position.</p>\
