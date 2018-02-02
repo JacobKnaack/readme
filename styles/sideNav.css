@@ -25,9 +25,5 @@
 }
 
 @media (max-width: 750px) {
-  .portrait {
-    width: auto;
-    height: 50px;
-    border-radius: 70px;
-  }
+ 
 }
