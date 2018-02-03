@@ -1,7 +1,7 @@
 const articles = [
   {
     "id": 1,
-    "created_on": "Jan 30, 2018",
+    "created_on": "Feb 2, 2018",
     "name": "Building a Chat UI with basic HTML, CSS, and Javascript: Part 1",
     "description": "Taking an idea from prototype to a working interface runnning in a Browser, with tools available to every modern computer user.",
     "html": "<p class='subtitle'>This post is focused on basic web development and design methodology. The goal is to help people take a prototype from concept to a development build running on a local computer. But the build will be simple enough to push to any hosting service without any fancy tools.</p>\
@@ -42,9 +42,9 @@ const articles = [
               &nbsp &lt;head&gt; <br>\
               &nbsp &nbsp &lt;meta charset=\"UTF-8\"&gt; <br>\
               &nbsp &nbsp &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt; <br>\
-              &nbsp &lt;head&gt; <br>\
+              &nbsp &lt;/head&gt; <br>\
               &nbsp &lt;body&gt;<br>\
-              &nbsp &lt;body&gt;<br>\
+              &nbsp &lt;/body&gt;<br>\
               &lt;html&gt;\
             </code>\
             <p class='codeComment'><em>// The two meta lines add some information for the Browser, letting it know that we are using UFT 8 character encoding for the HTML document, and making the content responsive to the device screen.</em></p>\
@@ -58,7 +58,7 @@ const articles = [
               &nbsp &lt;div class='conversations'&gt; <br>\
               <br>\
               &nbsp &lt;/div&gt; <br>\
-              &lt;body&gt;\
+              &lt;/body&gt;\
             </code>\
             <p>This will be the left most area of the screen, and will span the full height of the browser window.  We will pick a set pixel value for the width. By looking the protoype image I'll make a guess that it\'s around 200 pixels wide.</p>\
             <p>Let\'s open up our <strong>style.css</strong> file and add the styling we want to make this menu appear how we see in prototype:</p>\
@@ -86,7 +86,7 @@ const articles = [
             &nbsp&nbsp &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt; <br>\
             &lt;!-- this line below links our HTML and CSS together --&gt;<br>\
             &nbsp&nbsp &lt;link rel=\"stylesheet\" href=\"style.css\"&gt;<br>\
-            &nbsp &lt;head&gt;</code>\
+            &nbsp &lt;/head&gt;</code>\
             <p>When you open up your html file in a Browser, you should see a 200 pixel wide box running down the length of the Browser window:</p>\
             <img class='screenshot' src='../asset/screenshots/1/conversationsEmpty.png'>\
             <p>Nice! Now lets add some more HTML to make a box for the main section of our chat application: the messageList and the messageInput:</p>\
@@ -102,7 +102,7 @@ const articles = [
             &nbsp &nbsp &lt;div class='messageInput'&gt;<br><br>\
             &nbsp &nbsp &lt;/div&gt;<br>\
             &nbsp &lt;/div&gt; <br>\
-            &lt;body&gt;\</code>\
+            &lt;/body&gt;\</code>\
             <p class='codeComment'><em>// The first div will serve as a container for the messages and input. This way we can give this container styling that will help style both the messageList and messageInput relative to the conversations div.</em></p>\
             <p>Now let\'s modify our <strong>style.css</strong> file and give these elements the structure they need to display content properly:</p>\
             <h4 class='codeTitle'>style.css</h4>\
@@ -140,7 +140,7 @@ const articles = [
             <p class='codeComment larger'>this line gives our conversations element a positioning relative to it\'s normal position.  This way we can give it top, right, bottom, and left css commands which will adjust the positioning of the <em>away</em> from its normal position.</p>\
             <code class='codeBlock prettyprint linenums:14'>\
             &nbsp float: left;</code>\
-            <p class='codeComment larger'>Giving the element a styling of float: left will allow the element to be positioned to the left of the preceding element.  By adding this to the conversations CSS block, we are telling the conversations div to appear on the left side of whatever element comes after, in this case: the messageContainer. Without this stlyling command, the messaageContainer would appear below the conversations div.</p>\
+            <p class='codeComment larger'>Giving the element a styling of float: left will allow the element to be positioned to the left of the proceding element.  By adding this to the conversations CSS block, we are telling the conversations div to appear on the left side of whatever element comes after, in this case: the messageContainer. Without this stlyling command, the messageContainer would appear below the conversations div.</p>\
             <code class='codeBlock prettyprint linenums:21'>\
             &nbsp width: calc(100% - 200px);</code>\
             <p class='codeComment larger'>Here we are telling the messageContainer to have a width that is equal to the 100% of its <em>parent</em> container minus 200px, calc() is an actual CSS function that lets you perform calculations with CSS values. In this case it's the body element which we've given a width of 100vw (vw stands for view-width) minus the 200px for the width of the conversations div.</p>\

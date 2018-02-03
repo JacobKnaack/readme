@@ -24,6 +24,16 @@
   font-family: 'Share Tech Mono', monospace;
 }
 
+.sideNavToggle {
+  display: none;
+  border-bottom: thin solid #7EAFA5;
+  width: 50px;
+  margin: 50px auto;
+  cursor: pointer;
+}
+
 @media (max-width: 750px) {
- 
+  .sideNavToggle {
+    display: block;
+  }
 }
