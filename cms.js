@@ -7,13 +7,14 @@ const articles = [
     "html": "<p class='subtitle'>This post is focused on basic web development and design methodology. The goal is to help people take a prototype from concept to a development build running on a local computer. But the build will be simple enough to push to any hosting service without any fancy tools.</p>\
             <p>Let\'s build a really simple Chat UI, one that has all the features of a deployed chat application, but runs in the browser with nothing but three files:</p>\
             <ul class='articleList'>\
-              <li>A File for holding the template for our User Interface: our HTML file <code>index.html</code></li>\
-              <li>A File for defining how the template will appear in the Browser: our CSS file <code>style.css</code></li>\
-              <li>A File for all the logic and functionality the app will use: our Javascript file <code>chat.js</code></li>\
+            <li>A File for holding the template for our User Interface: our HTML file <code>index.html</code></li>\
+            <li>A File for defining how the template will appear in the Browser: our CSS file <code>style.css</code></li>\
+            <li>A File for all the logic and functionality the app will use: our Javascript file <code>chat.js</code></li>\
             </ul>\
+            <p>Using just these three files we are going to accomplish a few things in part 1 of this tutorial series:<br><br> - We are going to layout the general User Interface structure of a Chat Application. <br><br> - We are going to create a set of data we can use use to test out our applications functionality,<br><br> - and we are going to write some logic to append that data to our UI.</p>\
             <div class='divider'></div>\
             <h3 class='contentHeading'>Before we start writing code we have to decide what <em>exactly</em> we want to build</h3>\
-            <p>Let's go ahead and define some features for our chat, nothing fancy just some things we expect our UI to do:</p>\
+            <p>Let's go ahead and define some features for our UI, nothing fancy just some things we expect our interface to do:</p>\
             <p class='textNumbers'>1) We want to see our message history in the main part of the UI, which prints the message text and an indicator or image for who sent each message.</p>\
             <p class='textNumbers'>2) We want to be able to switch between multiple conversations with other users of the chat application.</p>\
             <p class='textNumbers'>3) We want to have an input field which will serve as a place to type our message and send it to our selected conversation.</p>\
@@ -49,13 +50,13 @@ const articles = [
             </code>\
             <p class='codeComment'><em>// The two meta lines add some information for the Browser, letting it know that we are using UFT 8 character encoding for the HTML document, and making the content responsive to the device screen.</em></p>\
             <p>From here we can add some html between the body tags. The code we add here will only be used to give some shape to our UI. The important bits we will add using mocked data and javascript.</p>\
-            <p>When we begin putting HTML in the body of the document, we must think about each element as a box.  The opening tag is the top of the box and the closing tag is the bottom of the box, and each preceding tag we put between those tags is another little box: </p>\
+            <p>When we begin putting HTML in the body of the document, we must think about each element as a box.  The opening tag is the top of the box and the closing tag is the bottom of the box, and each preceding tag we put between those tags is another box within: </p>\
             <img class='contentImg' src='https://i.stack.imgur.com/bJKfH.png'>\
             <p>The first box we want to define is the box that will hold our <strong>Conversations</strong>:</p>\
             <h4 class='codeTitle'>index.html</h4>\
             <code class='prettyprint codeBlock linenums:7'>\
               &lt;body&gt;<br>\
-              &nbsp &lt;div class='conversations'&gt; <br>\
+              &nbsp &lt;div id='conversations'&gt; <br>\
               <br>\
               &nbsp &lt;/div&gt; <br>\
               &lt;/body&gt;\
@@ -69,7 +70,7 @@ const articles = [
             &nbsp width: 100vw;<br>\
             &nbsp margin: 0;<br>\
             }<br><br>\
-            .conversations {<br>\
+            #conversations {<br>\
             &nbsp position: relative;<br>\
             &nbsp top: 0;<br>\
             &nbsp left: 0;<br>\
@@ -93,13 +94,13 @@ const articles = [
             <h4 class='codeTitle'>index.html</h4>\
             <code class='codeBlock prettyprint linenums:8'>\
             &lt;body&gt;<br>\
-            &nbsp &lt;div class='conversations'&gt; <br>\
+            &nbsp &lt;div id='conversations'&gt; <br>\
             <br>\
             &nbsp &lt;/div&gt; <br>\
-            &nbsp &lt;div class='messageContainer'&gt; <br>\
-            &nbsp &nbsp &lt;div class='messageList'&gt;<br><br>\
+            &nbsp &lt;div id='messageContainer'&gt; <br>\
+            &nbsp &nbsp &lt;div id='messageList'&gt;<br><br>\
             &nbsp &nbsp &lt;/div&gt;<br>\
-            &nbsp &nbsp &lt;div class='messageInput'&gt;<br><br>\
+            &nbsp &nbsp &lt;div id='messageInput'&gt;<br><br>\
             &nbsp &nbsp &lt;/div&gt;<br>\
             &nbsp &lt;/div&gt; <br>\
             &lt;/body&gt;\</code>\
@@ -107,7 +108,7 @@ const articles = [
             <p>Now let\'s modify our <strong>style.css</strong> file and give these elements the structure they need to display content properly:</p>\
             <h4 class='codeTitle'>style.css</h4>\
             <code class='codeBlock prettyprint linenums:7'>\
-            .conversations {<br>\
+            #conversations {<br>\
             &nbsp position: relative;<br>\
             &nbsp top: 0;<br>\
             &nbsp left: 0;<br>\
@@ -116,37 +117,151 @@ const articles = [
             &nbsp background-color: #E9E8F8;<br>\
             &nbsp float; left;<br>\
             }<br><br>\
-            .messageContainer {<br>\
+            #messageContainer {<br>\
             &nbsp position: relative;<br>\
             &nbsp top: 0;<br>\
             &nbsp left: 200px;<br>\
             &nbsp width: calc(100% - 200px);<br>\
             &nbsp height: 100%;<br>\
             }<br><br>\
-            .messageList {<br>\
+            #messageList {<br>\
             &nbsp height: calc(100% - 100px);<br>\
             &nbsp width: 100%;<br>\
             }<br><br>\
-            .messageInput {<br>\
+            #messageInput {<br>\
             &nbsp position: relative;<br>\
             &nbsp height: 100px;<br>\
-            &nbsp width; 100%;<br>\
+            &nbsp width: 100%;<br>\
+            &nbsp border-top: thin solid #e3e3e3;<br>\
             }</code>\
             <p>We should end up with three section taking up all of our browser window, the messageList and messageInput will appear pretty black, but there should be a subtle border between them :</p>\
             <img class='screenshot' src='../asset/screenshots/1/finishedLayout.png'>\
             <p>Let's look at our CSS and talk about some important parts that make our layout appear the way it does:</p>\
             <code class='codeBlock prettyprint linenums:8'>\
             &nbsp position: relative;</code>\
-            <p class='codeComment larger'>this line gives our conversations element a positioning relative to it\'s normal position.  This way we can give it top, right, bottom, and left css commands which will adjust the positioning of the <em>away</em> from its normal position.</p>\
+            <p class='codeComment larger'>this line gives our conversations element a positioning relative to it\'s normal position.  This way we can give it top, right, bottom, and left css commands which will adjust the positioning of element the <em>away</em> from its normal position.</p>\
             <code class='codeBlock prettyprint linenums:14'>\
             &nbsp float: left;</code>\
             <p class='codeComment larger'>Giving the element a styling of float: left will allow the element to be positioned to the left of the proceding element.  By adding this to the conversations CSS block, we are telling the conversations div to appear on the left side of whatever element comes after, in this case: the messageContainer. Without this stlyling command, the messageContainer would appear below the conversations div.</p>\
             <code class='codeBlock prettyprint linenums:21'>\
             &nbsp width: calc(100% - 200px);</code>\
             <p class='codeComment larger'>Here we are telling the messageContainer to have a width that is equal to the 100% of its <em>parent</em> container minus 200px, calc() is an actual CSS function that lets you perform calculations with CSS values. In this case it's the body element which we've given a width of 100vw (vw stands for view-width) minus the 200px for the width of the conversations div.</p>\
-            <p>That pretty much covers the structure of our project. On to mocking some data and using some javascript to add that content to our HTML.</p>\
+            <p>That pretty much covers the general layout of our project. Now we can focus on getting this UI to function with some mocked Chat Data.</p>\
             <div class='divider'></div>\
-            <h3 class='contentHeading'>Adding Mocked Data and Talking to our HTML with Javascript</h3>"
+            <h3 class='contentHeading'>Adding Mocked Data and Talking to our HTML with Javascript</h3>\
+            <p>What do I mean by Mocked Data?  This is essentially some data that will mimic real world data coming in from a  backend server with a database. Sinse we are only focused on programming an Interface, we aren't concerned with how we get data from the backend at the moment, just how our app uses the data in a useful way for our user.</p>\
+            <p>Lets create some Javascript objects that will serve as data models being requested from a chat database.  Open up the <strong>chat.js</strong> file and create our objects:</p>\
+            <h4 class='codeTitle'>chat.js</h4>\
+            <code class='codeBlock prettyprint linenums'>\
+            var conversations = [<br>\
+            &nbsp {<br>\
+            &nbsp &nbsp \"id\": 001,<br>\
+            &nbsp &nbsp \"name\": \"Mike\"<br>\
+            &nbsp },<br>\
+            &nbsp {<br>\
+            &nbsp &nbsp \"id\": 002,<br>\
+            &nbsp &nbsp \"name\": \"Suzzane\"<br>\
+            &nbsp }<br>\
+            ];<br><br>\
+            var messages = [<br>\
+            &nbsp {<br>\
+            &nbsp &nbsp \"id\": 0001,<br>\
+            &nbsp &nbsp \"created_at\": \"2018-1-30T03:24:00\",<br>\
+            &nbsp &nbsp \"from\": 001,<br>\
+            &nbsp &nbsp \"to\": 000,<br>\
+            &nbsp &nbsp \"text\": \"We should get Suzzane and go bowling.\"<br>\
+            &nbsp },<br>\
+            &nbsp {<br>\
+            &nbsp &nbsp \"id\": 0002,<br>\
+            &nbsp &nbsp \"created_at\": \"2018-1-30T04:50:00\",<br>\
+            &nbsp &nbsp \"from\": \"002\",<br>\
+            &nbsp &nbsp \"to\": 000,<br>\
+            &nbsp &nbsp \"text\": \"I think Mike wants to go bowling.\"<br>\
+            &nbsp },<br>\
+            &nbsp {<br>\
+            &nbsp &nbsp \"id\": 0003,<br>\
+            &nbsp &nbsp \"created_at\": \"2018-1-30T03:30:00\",<br>\
+            &nbsp &nbsp \"from\": 000,<br>\
+            &nbsp &nbsp \"to\": 001,<br>\
+            &nbsp &nbsp \"text\": \"I don\'t think she wants to go bowling.\"<br>\
+            &nbsp },<br>\
+            &nbsp {<br>\
+            &nbsp &nbsp \"id\": 0004,<br>\
+            &nbsp &nbsp \"created_at\": \"2018-1-30T05:45:00\",<br>\
+            &nbsp &nbsp \"from\": 000,<br>\
+            &nbsp &nbsp \"to\": 002,<br>\
+            &nbsp &nbsp \"text\": \"I know! He is quite persistent.\"<br>\
+            &nbsp }<br>\
+            ];\
+            </code>\
+            <p class='codeComment'><em>// We have created two arrays for now.  The first will serve as a a data structure to populate our conversations menu, the second will serve as a data structure to populate our messages list.</em></p>\
+            <p>With this in  place we can continue on and create our first piece of Javascript logic that will append the conversation information properly to our conversations menu:</p>\
+            <h4 class='codeTitle'>chat.js</h4>\
+            <code class='codeBlock prettyprint linenums:43'>\
+            for (var item in conversations) {<br>\
+            &nbsp document.getElementById('conversations').innerHTML += \"\\<br>\
+            &nbsp &nbsp  &lt;div class='conversationMenuItem'&gt;\\<br>\
+            &nbsp &nbsp &nbsp &lt;h3 class='conversationName'&gt;\\<br>\
+            &nbsp &nbsp &nbsp \"+ conversations[item].name +\"\\<br>\
+            &nbsp &nbsp &nbsp\ &lt;/h3&gt;\\<br>\
+            &nbsp &nbsp &lt;/div&gt;\"<br>\
+            }</code>\
+            <p>Let\'s add a script tag linking this Javascript file to our HTML file: </p>\
+            <h4 class='codeTitle'>index.html</h4>\
+            <code class='codeBlock prettyprint linenums'>\
+            &lt;!DOCTYPE html&gt; <br>\
+            &lt;html&gt; <br>\
+            &nbsp &lt;head&gt; <br>\
+            &nbsp &nbsp &lt;meta charset=\"UTF-8\"&gt; <br>\
+            &nbsp &nbsp &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt; <br>\
+            &nbsp &lt;/head&gt; <br>\
+            &nbsp &lt;body&gt;<br>\
+            &nbsp &lt;div id='conversations'&gt; <br>\
+            <br>\
+            &nbsp &lt;/div&gt; <br>\
+            &nbsp &lt;div id='messageContainer'&gt; <br>\
+            &nbsp &nbsp &lt;div id='messageList'&gt;<br><br>\
+            &nbsp &nbsp &lt;/div&gt;<br>\
+            &nbsp &nbsp &lt;div id='messageInput'&gt;<br><br>\
+            &nbsp &nbsp &lt;/div&gt;<br>\
+            &nbsp &lt;/div&gt; <br>\
+            &nbsp &lt;/body&gt;<br>\
+            &lt;!-- Add this at the bottom of the document or in the head --&gt;<br>\
+            &nbsp &lt;script src='./chat.js'&gt;&lt;/script&gt;<br>\
+            &lt;html&gt;\</code>\
+            <p>Now when we open up our index.html doucment in the Browser we should see this:</p>\
+            <img class='screenshot' src='../asset/screenshots/1/firstFunction.png'>\
+            <p>Let\'s explain what is going on here:</p>\
+            <code class='codeBlock prettyprint linenums:43'>\
+            for (var item in conversations) {</code>\
+            <p class='codeComment larger'>this is the beginning of a for loop which is being told to loop through the conversations array, and each index of that array is represented by a variable declared as item.</p>\
+            <code class='codeBlock prettyprint linenums:44'>\
+            &nbsp document.getElementById('conversations').innerHTML += \"\\<br>\
+            &nbsp &nbsp  &lt;div class='conversationMenuItem'&gt;\\<br>\
+            &nbsp &nbsp &nbsp &lt;h3 class='conversationName'&gt;\\<br>\
+            &nbsp &nbsp &nbsp \"+ conversations[item].name +\"\\<br>\
+            &nbsp &nbsp &nbsp\ &lt;/h3&gt;\\<br>\
+            &nbsp &nbsp &lt;/div&gt;\"</code>\
+            <p class='codeComment larger'>in the body of the for loop, we are calling a method on the <a href='https://www.w3schools.com/js/js_htmldom.asp' target='_blank'>Document Object Model.</a> The method getElementById grabs an html element with the id name that mathces the string provided between parentheses.  For each item in the conversations array, we grab the conversations div element, and add some HTML into the div element itself. In this case we are adding another div with an h3 within.</p>\
+            <p>Let\'s do the same thing for the messages array:</p>\
+            <code class='codeBlock prettyprint linenums:52'>\
+            for (var item in messages) {<br>\
+            &nbsp document.getElementById('messageList').innerHTML += \"\\<br>\
+            &nbsp &nbsp &lt;div class='messageItem'&gt;\\<br>\
+            &nbsp &nbsp &nbsp &lt;p class='messageText'&gt;\\<br>\
+            &nbsp &nbsp &nbsp \"+ messages[item].text +\"\\<br>\
+            &nbsp &nbsp &nbsp &lt;/p&gt;\\<br>\
+            &nbsp &nbsp &lt;/div&gt;\"<br>}</code>\
+            <p class='codeComment'><em>// This does the same thing as the function above it but this time we are iterating through the messages array and appending them to the messageList element.</em></p>\
+            <p>Now we should see all of our messages placed in our messageList element in the main part of the UI:</p>\
+            <img class='screenshot' src='../asset/screenshots/1/addedMessages.png'>\
+            <p>And that is all for part 1, let's look back at what we accomplished:</p>\
+            <ul class='articleList'>\
+            <li class='indented'><i class='fas fa-check-square'></i>We wrote an HTML Document and structured it with some styled elements</li>\
+            <li class='indented'><i class='fas fa-check-square'></i>We created a mocked Database with pertenant data for a Chat UI</li>\
+            <li class='indented'><i class='fas fa-check-square'></i>We wrote some Javascript that successfully appends that data to appropriate sections of our UI.</li>\
+            </ul>\
+            <p>Next we will program our UI for User interaction, we will filter our message for a selected conversation and make create our input element for adding messages to the messages array and updating the messageList Element.</p>" 
   },
 ];
 
