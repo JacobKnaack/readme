@@ -21,7 +21,7 @@ const articles = [
             <p>Let\'s use a simple design I found off of google that has some pretty standard features for chat:</p>\
             <img class='contentImg' src='https://cdn-images-1.medium.com/max/1600/1*5u4NzGRN_4hgRFsPGS92Sw.png'>\
             <p>This will be our general design structure that will serve as a prototype for the look and feel on our interface. The next step we need to take is to break these sections down into chunks for the browser.</p>\
-            <p>There are really three section of the this Interface that we really care about for our feature list that we outlined above:</p>\
+            <p>There are really three sections of this Interface that we really care about for our feature list that we outlined above:</p>\
             <p class='textNumbers'>1) The conversations list on the left</p>\
             <p class='textNumbers'>2) The list of messages in the middle section</p>\
             <p class='textNumbers'>3) The input section at the bottom of the middle section</p>\
@@ -34,7 +34,7 @@ const articles = [
               |- style.css<br>\
               |_ chat.js<br>\
             </code>\
-            <p>With those files created, let open up our HTML file and begin to lay our the structure of the interface</p>\
+            <p>With those files created, open up the HTML file in whatever text editor you like best, and begin to lay out the structure of the interface</p>\
             <p>Here is the boilerplate html code we want to start out with:</p>\
             <h4 class='codeTitle'>index.html</h4>\
             <code class='codeBlock prettyprint linenums'>\
@@ -97,9 +97,12 @@ const articles = [
             &nbsp &lt;div id='conversations'&gt; <br>\
             <br>\
             &nbsp &lt;/div&gt; <br>\
-            &nbsp &lt;div id='messageContainer'&gt; <br>\
+            &lt;!-- this is where we open the container for main part of our screen --&gt;<br>\
+            &nbsp &lt;div id='messageContainer'&gt;<br><br>\
+            &lt;!-- here is the container for our list of messages --&gt;<br>\
             &nbsp &nbsp &lt;div id='messageList'&gt;<br><br>\
-            &nbsp &nbsp &lt;/div&gt;<br>\
+            &nbsp &nbsp &lt;/div&gt;<br><br>\
+            &lt;!-- here is the container just for the message input at the bottom of the screen --&gt;<br>\
             &nbsp &nbsp &lt;div id='messageInput'&gt;<br><br>\
             &nbsp &nbsp &lt;/div&gt;<br>\
             &nbsp &lt;/div&gt; <br>\
@@ -134,12 +137,12 @@ const articles = [
             &nbsp width: 100%;<br>\
             &nbsp border-top: thin solid #e3e3e3;<br>\
             }</code>\
-            <p>We should end up with three section taking up all of our browser window, the messageList and messageInput will appear pretty blank, but there should be a subtle border between them :</p>\
+            <p>We should end up with three sections taking up all of our browser window, the messageList and messageInput will appear pretty blank, but there should be a subtle border between them :</p>\
             <img class='screenshot' src='../asset/screenshots/1/finishedLayout.png'>\
             <p>Let's look at our CSS and talk about some important parts that make our layout appear the way it does:</p>\
             <code class='codeBlock prettyprint linenums:8'>\
             &nbsp position: relative;</code>\
-            <p class='codeComment larger'>this line gives our conversations element a positioning relative to it\'s normal position.  This way we can give it top, right, bottom, and left css commands which will adjust the positioning of element the <em>away</em> from its normal position.</p>\
+            <p class='codeComment larger'>this line gives our conversations element a positioning relative to it\'s normal position.  This way we can give it top, right, bottom, and left css commands which will adjust the positioning of the element <em>away</em> from its normal position.</p>\
             <code class='codeBlock prettyprint linenums:14'>\
             &nbsp float: left;</code>\
             <p class='codeComment larger'>Giving the element a styling of float: left will allow the element to be positioned to the left of the proceding element.  By adding this to the conversations CSS block, we are telling the conversations div to appear on the left side of whatever element comes after, in this case: the messageContainer. Without this stlyling command, the messageContainer would appear below the conversations div.</p>\
@@ -255,14 +258,82 @@ const articles = [
             <p class='codeComment'><em>// This does the same thing as the function above it but this time we are iterating through the messages array and appending them to the messageList element.</em></p>\
             <p>Now we should see all of our messages placed in our messageList element in the main part of the UI:</p>\
             <img class='screenshot' src='../asset/screenshots/1/addedMessages.png'>\
-            <p>Lasty, let\'s add a little css to our element classes so the style and position of our messages look more like our prototype:</p>\
-            <p>And that is all for part 1, let's look back at what we accomplished:</p>\
+            <p>Great! Now the last thing we\'ll do is add a little bit of CSS to style these messages. let\'s make our element classes look more like our prototype:</p>\
+            <h4 class='codeTitle'>stlye.css</h4>\
+            <code class='codeBlock prettyprint linenums:7'>\
+            #conversations {<br>\
+            &nbsp position: relative;<br>\
+            &nbsp top: 0;<br>\
+            &nbsp left: 0;<br>\
+            &nbsp width: 200px;<br>\
+            &nbsp height: 100vh;<br>\
+            &nbsp background-color: #E9E8F8;<br>\
+            &nbsp float; left;<br>\
+            }<br><br>\
+            /* center our text in the Conversations Menu */<br>\
+            .conversationName {<br>\
+            &nbsp text-align: center;<br>\
+            }<br><br>\
+            #messageContainer {<br>\
+            &nbsp position: relative;<br>\
+            &nbsp top: 0;<br>\
+            &nbsp left: 200px;<br>\
+            &nbsp width: calc(100% - 200px);<br>\
+            &nbsp height: 100%;<br>\
+            }<br><br>\
+            #messageList {<br>\
+            /* give our messageList a position absolute so we can move<br> it to the bottom of the page */<br>\
+            &nbsp position: absolute;<br>\
+            &nbsp bottom: 100px;<br>\
+            /* We also change the height to auto so its size changes<br> depending on the elements within */<br>\
+            &nbsp height: auto;<br>\
+            &nbsp width: 100%;<br>\
+            }<br><br>\
+            /* We add some styling for our messageItem element <br> so that it aligns properly in the messageList and displays nicely */<br>\
+            .messageItem {<br>\
+            &nbsp height: 40px;<br>\
+            &nbsp width: 50 %;<br>\
+            &nbsp margin: 0 auto;<br>\
+            }<br><br>\
+            /* Now we add some styling for our text so that it appears white and has a nicer background with a border-radius.*/<br>\
+            .messageText {<br>\
+            &nbsp margin: 0;<br>\
+            &nbsp height: 30px;<br>\
+            &nbsp line-height: 30px;<br>\
+            &nbsp background-color: #6F739A;<br>\
+            &nbsp text-align: left;<br>\
+            &nbsp border-radius: 10px;<br>\
+            &nbsp padding: 0 5px;<br>\
+            &nbsp color: white;<br>\
+            }<br><br>\
+            /* We also change up the input so it sticks to the bottom.*/<br>\
+            #messageInput {<br>\
+            &nbsp position: absolute;<br>\
+            &nbsp bottom: 0;<br>\
+            &nbsp height: 100px;<br>\
+            &nbsp width: 100%;<br>\
+            &nbsp border-top: thin solid #e3e3e3;<br>\
+            }</code>\
+            <p>Now our messages are looking a little more styled:</p>\
+            <img class='screenshot' src='../asset/screenshots/1/messagesStyled.png'>\
+            <p>Let\'s look at these changes a little more closely and see what our changes have done:</p>\
+            <code class='codeBlock prettyprint linenums:33'>\
+            &nbsp position: absolute;<br>\
+            &nbsp bottom: 100px;\
+            </code>\
+            <p class='codeComment larger'>These lines are important as they change the position of the messageList Element from relative to absolute, giving us the ability to move this element anywhere realtive to it's parent container, in this case 100px from the bottom of the messageContainer. </p>\
+            <code class='codeBlock prettyprint linenums:63'>\
+            &nbsp position: absolute;<br>\
+            &nbsp bottom: 0;\
+            </code>\
+            <p class='codeComment larger'>We also do the same for the messageInput container so the it will always be positioned at the bottom of the messageContainer.</p>\
+            <p>Great! Now we have a decently styled UI with all of our important information being displayed properly, let's look back at what we accomplished:</p>\
             <ul class='articleList'>\
-            <li class='indented'><i class='fas fa-check-square'></i>We wrote an HTML Document and structured it with some styled elements</li>\
-            <li class='indented'><i class='fas fa-check-square'></i>We created a mocked Database with pertenant data for a Chat UI</li>\
+            <li class='indented'><i class='fas fa-check-square'></i>We wrote an HTML Document and structured it with some styled elements.</li>\
+            <li class='indented'><i class='fas fa-check-square'></i>We created a mocked Database with pertenant data for a Chat UI.</li>\
             <li class='indented'><i class='fas fa-check-square'></i>We wrote some Javascript that successfully appends that data to appropriate sections of our UI.</li>\
             </ul>\
-            <p>Next we will program our UI for User interaction, we will filter our message for a selected conversation and make create our input element for adding messages to the messages array and updating the messageList Element.</p>" 
+            <p>Next we will program our UI for user interaction, we will filter our message for a selected conversation and make create our input element for adding messages to the messages array and updating the messageList Element.</p>" 
   },
 ];
 
