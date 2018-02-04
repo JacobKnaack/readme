@@ -97,7 +97,7 @@ const articles = [
             &nbsp &lt;div id='conversations'&gt; <br>\
             <br>\
             &nbsp &lt;/div&gt; <br>\
-            &lt;!-- this is where we open the container for main part of our screen --&gt;<br>\
+            &lt;!-- this is where we create the opening tag for main part of our screen --&gt;<br>\
             &nbsp &lt;div id='messageContainer'&gt;<br><br>\
             &lt;!-- here is the container for our list of messages --&gt;<br>\
             &nbsp &nbsp &lt;div id='messageList'&gt;<br><br>\
@@ -245,7 +245,7 @@ const articles = [
             &nbsp &nbsp &nbsp \"+ conversations[item].name +\"\\<br>\
             &nbsp &nbsp &nbsp\ &lt;/h3&gt;\\<br>\
             &nbsp &nbsp &lt;/div&gt;\"</code>\
-            <p class='codeComment larger'>in the body of the for loop, we are calling a method on the <a href='https://www.w3schools.com/js/js_htmldom.asp' target='_blank'>Document Object Model.</a> The method getElementById grabs an html element with the id name that mathces the string provided between parentheses.  For each item in the conversations array, we grab the conversations div element, and add some HTML into the div element itself. In this case we are adding another div with an h3 within.</p>\
+            <p class='codeComment larger'>in the body of the for loop, we are calling a method on the <a href='https://www.w3schools.com/js/js_htmldom.asp' target='_blank'>Document Object Model.</a> The method getElementById grabs an html element with the id name that matches the string provided between parentheses.  For each item in the conversations array, we grab the conversations div element, and add some HTML into the div element itself. In this case we are adding another div with an h3 within.</p>\
             <p>Let\'s do the same thing for the messages array:</p>\
             <code class='codeBlock prettyprint linenums:52'>\
             for (var item in messages) {<br>\
@@ -326,14 +326,14 @@ const articles = [
             &nbsp position: absolute;<br>\
             &nbsp bottom: 0;\
             </code>\
-            <p class='codeComment larger'>We also do the same for the messageInput container so the it will always be positioned at the bottom of the messageContainer.</p>\
+            <p class='codeComment larger'>We also do the same for the messageInput container so it will always be positioned at the bottom of the messageContainer.</p>\
             <p>Great! Now we have a decently styled UI with all of our important information being displayed properly, let's look back at what we accomplished:</p>\
             <ul class='articleList'>\
             <li class='indented'><i class='fas fa-check-square'></i>We wrote an HTML Document and structured it with some styled elements.</li>\
             <li class='indented'><i class='fas fa-check-square'></i>We created a mocked Database with pertenant data for a Chat UI.</li>\
             <li class='indented'><i class='fas fa-check-square'></i>We wrote some Javascript that successfully appends that data to appropriate sections of our UI.</li>\
             </ul>\
-            <p>Next we will program our UI for user interaction, we will filter our message for a selected conversation and make create our input element for adding messages to the messages array and updating the messageList Element.</p>" 
+            <p>Next we will program our UI for user interaction, we will filter our message for a selected conversation and create our input element for adding messages to the messages array and updating the messageList element.</p>" 
   },
 ];
 
