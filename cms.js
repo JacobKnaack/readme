@@ -134,7 +134,7 @@ const articles = [
             &nbsp width: 100%;<br>\
             &nbsp border-top: thin solid #e3e3e3;<br>\
             }</code>\
-            <p>We should end up with three section taking up all of our browser window, the messageList and messageInput will appear pretty black, but there should be a subtle border between them :</p>\
+            <p>We should end up with three section taking up all of our browser window, the messageList and messageInput will appear pretty blank, but there should be a subtle border between them :</p>\
             <img class='screenshot' src='../asset/screenshots/1/finishedLayout.png'>\
             <p>Let's look at our CSS and talk about some important parts that make our layout appear the way it does:</p>\
             <code class='codeBlock prettyprint linenums:8'>\
@@ -255,6 +255,7 @@ const articles = [
             <p class='codeComment'><em>// This does the same thing as the function above it but this time we are iterating through the messages array and appending them to the messageList element.</em></p>\
             <p>Now we should see all of our messages placed in our messageList element in the main part of the UI:</p>\
             <img class='screenshot' src='../asset/screenshots/1/addedMessages.png'>\
+            <p>Lasty, let\'s add a little css to our element classes so the style and position of our messages look more like our prototype:</p>\
             <p>And that is all for part 1, let's look back at what we accomplished:</p>\
             <ul class='articleList'>\
             <li class='indented'><i class='fas fa-check-square'></i>We wrote an HTML Document and structured it with some styled elements</li>\

@@ -138,10 +138,6 @@ code {
   overflow: hidden;
 }
 
-.sideNavDefault {
-  width: 200px;
-}
-
 #articleContent {
   position: relative;
   left: 200px;
@@ -171,6 +167,7 @@ code {
   margin: 0 auto;
   padding: 10px;
   overflow: scroll;
+  white-space: nowrap;
 }
 
 @media (max-width: 750px) {
@@ -183,14 +180,18 @@ code {
     display: inherit;
   }
 
+  #sideNav {
+    transform: translateX(-200px);
+    transition: transform 0.5s ease-out;
+  }
+
   .sideNavOpen {
-    width: 200px;
-    transition: 0.5s ease-in-out;
+    transform: translateX(0px) !important;
+    transition: transform 0.5s ease-in;
   }
 
   .sideNavDefault {
     width: 0px !important;
-    transition: 0.5s ease-in-out;  
   }
 
   .screenshot {

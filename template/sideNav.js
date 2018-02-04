@@ -10,11 +10,9 @@ document.getElementById("sideNav").innerHTML =
 
   function toggleSideNav () {
     var btnEl = document.getElementById('sideNav');
-    if (btnEl.className === 'sideNavDefault') {
-      btnEl.classList.remove('sideNavDefault');
+    if (btnEl.className !== 'sideNavOpen') {
       btnEl.classList.add('sideNavOpen');
     } else {
-      btnEl.classList.add('sideNavDefault');
       btnEl.classList.remove('sideNavOpen');
     }
   }
