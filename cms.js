@@ -232,7 +232,7 @@ const articles = [
             &lt;!-- Add this at the bottom of the document or in the head --&gt;<br>\
             &nbsp &lt;script src='./chat.js'&gt;&lt;/script&gt;<br>\
             &lt;html&gt;\</code>\
-            <p>Now when we open up our index.html doucment in the Browser we should see this:</p>\
+            <p>Now when we open up our index.html document in the Browser we should see this:</p>\
             <img class='screenshot' src='../asset/screenshots/1/firstFunction.png'>\
             <p>Let\'s explain what is going on here:</p>\
             <code class='codeBlock prettyprint linenums:43'>\
@@ -335,6 +335,13 @@ const articles = [
             </ul>\
             <p>Next we will program our UI for user interaction, we will filter our message for a selected conversation and create our input element for adding messages to the messages array and updating the messageList element.</p>" 
   },
+  {
+    "id": 2,
+    "created_on": "Feb 6, 2018",
+    "name": "Building a Chat UI with basic HTML, CSS, and Javascript: Part 2",
+    "description": "A continuation from part 1, focusing on simple user interaction and updating the browser screen with easy to understand commands.",
+    "html": ""
+  }
 ];
 
 

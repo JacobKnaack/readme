@@ -43,7 +43,7 @@ code {
 }
 
 #articleText {
- margin-bottom: 200px; 
+ margin-bottom: 100px; 
 }
 
 #articleText .subtitle {
@@ -138,7 +138,7 @@ code {
   overflow: hidden;
 }
 
-#articleContent {
+#articleContent, #footer {
   position: relative;
   left: 200px;
   width: calc(100vw - 200px);
@@ -168,6 +168,13 @@ code {
   padding: 10px;
   overflow: scroll;
   white-space: nowrap;
+}
+
+#footer {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 @media (max-width: 750px) {
