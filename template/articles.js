@@ -381,8 +381,8 @@ var articles = [
             function selectConversation() {<br>\
             &nbsp // identify the conversation that is being clicked on.<br>\
             &nbsp &nbsp // find messages associated with that identity.<br>\
-            &nbsp &nbsp &nbsp // .<br>\
+            &nbsp &nbsp &nbsp // return those messages.<br>\
             }</code>\
-            "
+            <h2>THIS ARTICLE IS UNDER CONSTRUCTION :)</h2>"
   }
 ];
