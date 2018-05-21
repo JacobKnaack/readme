@@ -43,7 +43,7 @@ code {
 }
 
 #articleText {
- margin-bottom: 100px; 
+ margin-bottom: 100px;
 }
 
 #articleText .subtitle {
@@ -67,7 +67,7 @@ code {
 
 .indented {
   margin: 10px 0 0 10px !important;
-  text-indent: -35px;  
+  text-indent: -35px;
 }
 
 .articleList li svg {
@@ -108,34 +108,11 @@ code {
   background-color: #d3d3d3;
 }
 
-#sideNavBtn {
-  position: fixed;
-  z-index: 4;
-  display: none;
-  height: 30px;
-  width: 30px;
-  top: 20px;
-  left: 5px;
-  border-radius: 20px;
-  background-color: #FF69B4;
-}
-
 .menuIcon {
   text-align: center;
   width: 100% !important;
   padding-top: 20%;
   color: #ffffff;
-}
-
-#sideNav {
-  position: fixed;
-  z-index: 5;
-  height: 100vh;
-  width: 200px;
-  top: 0;
-  left: 0;
-  background-color: #ffffff;
-  overflow: hidden;
 }
 
 #articleContent, #footer {
@@ -181,24 +158,6 @@ code {
   #articleContent {
     left: 0;
     width: 100vw !important;
-  }
-
-  #sideNavBtn {
-    display: inherit;
-  }
-
-  #sideNav {
-    transform: translateX(-200px);
-    transition: transform 0.5s ease-out;
-  }
-
-  .sideNavOpen {
-    transform: translateX(0px) !important;
-    transition: transform 0.5s ease-in;
-  }
-
-  .sideNavDefault {
-    width: 0px !important;
   }
 
   .screenshot {
