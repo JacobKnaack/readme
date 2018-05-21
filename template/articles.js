@@ -497,7 +497,7 @@ var articles = [
     <h4 class='codeTitle'>App.js</h4>\
     <code class='codeBlock prettyprint linenums'>\
       import React, { Component } from 'react'; <br>\
-      importimport MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'\
+      import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'\
       import logo from './logo.svg';<br>\
       import './App.css';<br><br>\
       class App extends Component {<br>\
