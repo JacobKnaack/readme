@@ -661,7 +661,7 @@ var articles = [
       &nbsp )<br>\
       }<br><br>\
       export default PostCard</code>\
-      <p class='codeComment'><em>// You can see that we have created some styling components to go along with our material ui components.  These add minimal styling and color adjuments.  Feel free to play around with these and try different styles for your UI.</em></p>\
+      <p class='codeComment'><em>// You can see that we have created some styling objects to go along with our material ui components.  These add minimal styling and color adjustments.  Feel free to play around with these and try different styles for your UI.</em></p>\
       <p>With our props passed into our component we can iterate through our state array and create a seperate component for each post we receive in our fetch request from reddit, and this is what we see: </p>\
       <img src='../asset/screenshots/3/rendered-posts.png'>\
       <div class='divider'></div>\
