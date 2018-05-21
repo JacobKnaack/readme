@@ -15,7 +15,7 @@ var articles = [
     "id": 1,
     "created_on": "Feb 2, 2018",
     "name": "Building a Chat UI with basic HTML, CSS, and Javascript: Part 1",
-    "description": "Taking an idea from prototype to a working interface runnning in a Browser, with tools available to every modern computer user.",
+    "description": "Taking an idea from prototype to a working interface running in a Browser, with tools available to every modern computer user.",
     "next": 2,
     "prev": null,
     "html": "<p class='subtitle'>This post is focused on basic web development and design methodology. The goal is to help people take a prototype from concept to a development build running on a local computer. But the build will be simple enough to push to any hosting service without any fancy tools.</p>\
@@ -412,7 +412,7 @@ var articles = [
     <p>This script will take a while to create our source files, but once it's completed we will see a new folder created in our directory called <code>reddit-clone</code>.  Opening this folder will reveal our initialized ReactJS project complete with scripts for running and building our project if we want to deploy on the web.  You should see somehthing like this:</p>\
     <img class='screenshot' src='../asset/screenshots/3/project-directory.png'>\
     <p>At this point we can navigate to this folder in our terminal by typing this command and hitting enter:<code class='codeBlock'>cd reddit-clone</code></p>\
-    <p>Now let's run a script to start a development server compiling out project and openning it in our browser:<code class='codeBlock'>npm start</code></p>\
+    <p>Now let's run a script to start a development server compiling out project and opening it in our browser:<code class='codeBlock'>npm start</code></p>\
     <p>Your browser should open up with a URL pointed at your computer's local IP addess and port. You should see something like this:</p>\
     <img class='screenshot' src='../asset/screenshots/3/npm-start.png'>\
     <p>We are now ready to open up our text editor and begin building our App!</p>\
@@ -482,8 +482,8 @@ var articles = [
       &nbsp &nbsp &nbsp })<br>\
       &nbsp &nbsp .catch(error => alert('failed to fetch reddit data'))<br>\
       &nbsp }</code>\
-    <p class='codeComment'><em>// This method: componentWillMount, is a built in method that React components have access to. It will call what ever logic is put within it before the component has mounted in the browser and thus we can make changes to our component before anyting is rendered to the screen.</em></p>\
-    <p>On line 14 we are using the fetch API to make an http request to reddit.com/.json.  By deafult this will be a GET request unless otherwise specified. It is impotant to note that this API call returns a promise, so we must use javascript's <code>.then</code> <code>.catch</code> syntax to handle this API call asynchronously. Let's take a closer look to see what's happening:</p>\
+    <p class='codeComment'><em>// This method: componentWillMount, is a built in method that React components have access to. It will run whatever logic is put within it before the component has mounted in the browser and thus we can make changes to our component before anyting is rendered to the screen.</em></p>\
+    <p>On line 14 we are using the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API' target='_blank'>fetch API</a> to make an http request to reddit.com/.json.  By default this will be a GET request unless otherwise specified. It is impotant to note that this API call returns a promise, so we must use javascript's <code>.then</code> <code>.catch</code> syntax to handle this API call asynchronously. Let's take a closer look to see what's happening:</p>\
     <code class='codeBlock prettyprint linenums:15'>\
       &nbsp &nbsp .then(res => res.json())</code>\
     <p class='codeComment'><em>// the fetch call returns a response object needs to be converted into a parseable object. We can use the <code>.json()</code> method that fetch gives us to convert the resposne into json data.</em></p>\
@@ -543,7 +543,7 @@ var articles = [
       &nbsp )<br>\
       }<br><br>\
       export default PostCard</code>\
-    <p class='codeComment'><em>// Unlike our app component we don't define a class that is a React.Component.  Instead we are using a simper stateless React component that can't be intialized with a constructor.</em></p>\
+    <p class='codeComment'><em>// Unlike our app component we don't define a class that is a React.Component.  Instead we are using a simpler syntax, implementing a stateless React component that can't be intialized with a constructor.</em></p>\
     <p>With our Post component created we can import it into <code>App.js</code> and pass in our post data:</p>\
     <h4 class='codeTitle'>App.js</h4>\
     <code class='codeBlock prettyprint linenums'>\
@@ -663,7 +663,7 @@ var articles = [
       export default PostCard</code>\
       <p class='codeComment'><em>// You can see that we have created some styling objects to go along with our material ui components.  These add minimal styling and color adjustments.  Feel free to play around with these and try different styles for your UI.</em></p>\
       <p>With our props passed into our component we can iterate through our state array and create a seperate component for each post we receive in our fetch request from reddit, and this is what we see: </p>\
-      <img src='../asset/screenshots/3/rendered-posts.png'>\
+      <img class='screenshot' src='../asset/screenshots/3/rendered-posts.png'>\
       <div class='divider'></div>\
       <h3 class='contentHeading'>What We've Accomplished...</h3>\
       <p>We were able to accomplish a couple things:</p>\
