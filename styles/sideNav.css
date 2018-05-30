@@ -1,3 +1,26 @@
+#sideNav {
+  position: fixed;
+  z-index: 5;
+  height: 100vh;
+  width: 200px;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+#sideNavBtn {
+  position: fixed;
+  z-index: 4;
+  display: none;
+  height: 30px;
+  width: 30px;
+  top: 20px;
+  left: 5px;
+  border-radius: 20px;
+  background-color: #FF69B4;
+}
+
 .navContainer {
   width: 100%;
   height: 100%;
@@ -16,7 +39,42 @@
 
 .homeBtn {
   display: block;
-  font-size: 200%;
+  font-size: 120%;
   color: #7EAFA5;
+  width: 80%;
+  margin: 50px auto 0 auto;
   text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.sideNavToggle {
+  display: none;
+  border-bottom: thin solid #7EAFA5;
+  width: 50px;
+  margin: 50px auto;
+  cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .sideNavToggle {
+    display: block;
+  }
+
+  #sideNavBtn {
+    display: inherit;
+  }
+
+  #sideNav {
+    transform: translateX(-200px);
+    transition: transform 0.5s ease-out;
+  }
+
+  .sideNavOpen {
+    transform: translateX(0px) !important;
+    transition: transform 0.5s ease-in;
+  }
+
+  .sideNavDefault {
+    width: 0px !important;
+  }
 }
