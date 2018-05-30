@@ -409,7 +409,7 @@ var articles = [
     <p>In your command line, type this command and press enter: <code class='codeBlock'>npm install -g create-react-app</code></li></p>\
     <p>Once the script finishes the installation we can create our React project with no configuration!<p/>\
     <p>Simply type this command into your terminal to create a React Project named reddit-clone:<code class='codeBlock'>create-react-app reddit-clone</code></p>\
-    <p>This script will take a while to create our source files, but once it's completed we will see a new folder created in our directory called <code>reddit-clone</code>.  Opening this folder will reveal our initialized ReactJS project complete with scripts for running and building our project if we want to deploy on the web.  You should see somehthing like this:</p>\
+    <p>This script will take a while to create our source files, but once it's completed we will see a new folder created in our directory called <code>reddit-clone</code>.  Opening this folder will reveal our initialized ReactJS project complete with scripts for running and building our project if we want to deploy on the web.  You should see something like this:</p>\
     <img class='screenshot' src='../asset/screenshots/3/project-directory.png'>\
     <p>At this point we can navigate to this folder in our terminal by typing this command and hitting enter:<code class='codeBlock'>cd reddit-clone</code></p>\
     <p>Now let's run a script to start a development server compiling out project and opening it in our browser:<code class='codeBlock'>npm start</code></p>\
@@ -442,7 +442,7 @@ var articles = [
       export default App;\
     </code>\
     <p>This is all of the content that is being served in the application created by create-react-app.  Let's delete lines 13 through 15. As well as replace the title on line 11 from <code>Welcome to React</code> to <code>Reddit Clone</code>.</p>\
-    <p>This will clear out the default content and give us leave us a blank slate to put our own content in.  We also changed the title to our application's name. Now let's discuss the first step of creating our Reddit clone: getting post data from Reddit.</p>\
+    <p>This will clear out the default content and leave us a blank slate to put our own content in.  We also changed the title to our application's name. Now let's discuss the first step of creating our Reddit clone: getting post data from Reddit.</p>\
     <p>Luckily for us Reddit gives us an easy way to interact with it's data. simply making an HTTP request to <a href='http://reddit.com/.json' target='_blank'>http://reddit.com/.json</a> will give us all the data from reddit's front page as a json object. This way we can easily create our own React UI components in real time from Reddit's data.</p>\
     <p>In order to make use of this data we'll have to modify our App.js component.  We need to add 2 important things:</p>\
     <ul class='articleList'><li>Add a constructor and <code>this.state</code>.</li>\
@@ -482,22 +482,22 @@ var articles = [
       &nbsp &nbsp &nbsp })<br>\
       &nbsp &nbsp .catch(error => alert('failed to fetch reddit data'))<br>\
       &nbsp }</code>\
-    <p class='codeComment'><em>// This method: componentWillMount, is a built in method that React components have access to. It will run whatever logic is put within it before the component has mounted in the browser and thus we can make changes to our component before anyting is rendered to the screen.</em></p>\
+    <p class='codeComment'><em>// This method: componentWillMount, is a built in method that React components have access to. It will run whatever logic is put within it before the component has mounted in the browser and thus we can make changes to our component before anything is rendered to the screen.</em></p>\
     <p>On line 14 we are using the <a href='https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API' target='_blank'>fetch API</a> to make an http request to reddit.com/.json.  By default this will be a GET request unless otherwise specified. It is impotant to note that this API call returns a promise, so we must use javascript's <code>.then</code> <code>.catch</code> syntax to handle this API call asynchronously. Let's take a closer look to see what's happening:</p>\
     <code class='codeBlock prettyprint linenums:15'>\
       &nbsp &nbsp .then(res => res.json())</code>\
-    <p class='codeComment'><em>// the fetch call returns a response object needs to be converted into a parseable object. We can use the <code>.json()</code> method that fetch gives us to convert the resposne into json data.</em></p>\
+    <p class='codeComment'><em>// the fetch call returns a response object (which we define as res) and needs to be converted into a parseable object. We can use the <code>.json()</code> method that fetch gives us to convert the response into json data.</em></p>\
     <code class='codeBlock prettyprint linenums:16'>\
       &nbsp &nbsp .then(postData => {<br>\
       &nbsp &nbsp &nbsp &nbsp this.setState({ posts: postData.data.children })<br>\
       &nbsp &nbsp &nbsp })<br></code>\
-    <p class='codeComment'><em>// The <code>.json()</code> method returns another promise so we have to chain another <code>.then</code>.  This will return a our json data if the promise resolves. Now we can set the state of our component so we have direct access to our reddit data.</em></p>\
-    <p>With our data safe and sound in our apps state. Let's install material-ui and create our materail design components. Make sure you are still in your <code>reddit-clone</code> project directory and run a this comand in your terminal:<code class='codeBlock'>npm install --save material-ui</code></p>\
+    <p class='codeComment'><em>// The <code>.json()</code> method returns another promise so we have to chain another <code>.then</code>.  This will return our json data if when the promise resolves. Now we can set the state of our component so we have direct access to our reddit data.</em></p>\
+    <p>With our data safe and sound in our app's state. Let's install material-ui and create our material design components. Make sure you are still in your <code>reddit-clone</code> project directory and run this comand in your terminal:<code class='codeBlock'>npm install --save material-ui</code></p>\
     <p>This will install material-ui components to our projects dependencies and allow us to use them in our jsx.  Let's import this libray of code into our App and configure our component to be able to use material-ui themes:</p>\
     <h4 class='codeTitle'>App.js</h4>\
     <code class='codeBlock prettyprint linenums'>\
       import React, { Component } from 'react'; <br>\
-      import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'\
+      import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';<br>\
       import logo from './logo.svg';<br>\
       import './App.css';<br><br>\
       class App extends Component {<br>\
@@ -530,7 +530,7 @@ var articles = [
       }<br><br>\
       export default App;\</code>\
     <p class='codeComment'><em>// You can see that we added an import statement on line 2 and wrapped our jsx in the imported theme provider (lines 24 and 31).</em></p>\
-    <p>Now let's create a React component that will render our postdata stored in <code>this.state</code>.  We'll start by creating a folder within the <code>src</code> directory called <code>components</code>.  Then we will create a file called <code>Post.js</code>. Initialize the component with this code:</p>\
+    <p>Now let's create a React component that will render our post data stored in <code>this.state</code>.  We'll start by creating a folder within the <code>src</code> directory called <code>components</code>.  Then we will create a file called <code>Post.js</code>. Initialize the component with this code:</p>\
     <h4 class='codeTitle'>/components/Post.js</h4>\
     <code class='codeBlock prettyprint linenums'>\
       import React from 'react'<br> \
@@ -548,8 +548,8 @@ var articles = [
     <h4 class='codeTitle'>App.js</h4>\
     <code class='codeBlock prettyprint linenums'>\
       import React, { Component } from 'react'; <br>\
-      import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'<br>\
-      import Post from './components/Post'<br>\
+      import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';<br>\
+      import Post from './components/Post';<br>\
       import logo from './logo.svg';<br>\
       import './App.css';<br><br>\
       class App extends Component {<br>\
@@ -598,15 +598,15 @@ var articles = [
       &nbsp }<br>\
       }<br><br>\
       export default App;\</code>\
-    <p class='codeComment'><em>// This won't do anything cool yet. But you can see that we are passing in all the relevant post data as properties on our Post component.</em></p>\
+    <p class='codeComment'><em>// This won't do anything cool yet. But you can see that we are passing in all the relevant post data as properties on our Post component.  By using curly braces we are able to inject straight javascript logic directly into our jsx and return elements to be rendered as html.</em></p>\
     <p>At this point we are looping through our state array with a <code>.map</code> method and creating a post component for each post that exists in the post array. Which we can do directly in our return statement of our JSX.</p>\
     <p>Now let's use material-ui to render our post data:</p>\
     <h4 class='codeTitle'>/components/Post.js</h4>\
     <code class='codeBlock prettyprint linenums'>\
-      import React from 'react'<br> \
-      import Avatar from 'material-ui/Avatar'<br> \
-      import FlatButton from 'material-ui/FlatButton'<br> \
-      import { Card, CardHeader, CardMedia, CardText } from 'material-ui/Card'<br><br>\
+      import React from 'react';<br> \
+      import Avatar from 'material-ui/Avatar';<br> \
+      import FlatButton from 'material-ui/FlatButton';<br> \
+      import { Card, CardHeader, CardMedia, CardText } from 'material-ui/Card';<br><br>\
       const Post = (props) => {<br>\
       &nbsp const cardStyle = {<br>\
       &nbsp &nbsp width: '70%',<br>\
@@ -617,7 +617,7 @@ var articles = [
       &nbsp &nbsp flexDirection: 'row',<br>\
       &nbsp &nbsp justifyContent: 'center',<br>\
       &nbsp &nbsp textAlign: 'left',<br>\
-      &nbsp &nbsp margin: '0 auto',>br>\
+      &nbsp &nbsp margin: '0 auto',<br>\
       &nbsp &nbsp backgroundColor: '#222222',<br>\
       &nbsp }<br>\
       &nbsp const titleStyle = {<br>\
@@ -667,9 +667,9 @@ var articles = [
       <div class='divider'></div>\
       <h3 class='contentHeading'>What We've Accomplished...</h3>\
       <p>We were able to accomplish a couple things:</p>\
-      <ul class='articleList'><li>We Set up a project with create-react-app.</li>\
-      <li>We Created a component that fetched data from reddit.com.</li>\
-      <li>We Created a component to display posts using material-ui.</li></ul>\
+      <ul class='articleList'><li>We set up a project with create-react-app.</li>\
+      <li>We created a component that fetched data from reddit.com.</li>\
+      <li>We created a component to display posts using material-ui.</li></ul>\
       <p>Next we will create a component for displaying comments and implementing a 'next' button to automatically grab posts and comment data.</p>"
   }
 ];
