@@ -29,8 +29,13 @@ function getUrlParam(parameter, defaultvalue) {
 }
 
 function fetchArticles(path) {
+  let baseUrl = window.location.origin
+  if (baseUrl.includes('jacobknaack.me')) {
+    baseUrl += '/readme'
+  }
+
   return new Promise(function (resolve, reject) {
-    request.open('GET', `${window.location.origin}/articles/${path}`, true);
+    request.open('GET', `${baseUrl}/articles/${path}`, true);
     request.onload = function (e) {
       if (request.readyState === 4) {
         if (request.status === 200) {
