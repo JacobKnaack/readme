@@ -30,7 +30,7 @@ function getUrlParam(parameter, defaultvalue) {
 
 function fetchArticles(path) {
   return new Promise(function (resolve, reject) {
-    request.open('GET', `/articles/${path}`, true);
+    request.open('GET', `${window.location.origin}/articles/${path}`, true);
     request.onload = function (e) {
       if (request.readyState === 4) {
         if (request.status === 200) {
