@@ -1,0 +1,30 @@
+{
+  "name": "readme",
+  "version": "1.0.0",
+  "description": "A public facing project for expressing developer thoughts and ideas around web development",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest --verbose --coverage",
+    "test:watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacobKnaack/readme.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JacobKnaack/readme/issues"
+  },
+  "homepage": "https://github.com/JacobKnaack/readme#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1073.0",
+    "dotenv": "^16.0.0",
+    "jest": "^27.5.1",
+    "showdown": "^2.0.0-alpha"
+  }
+}
