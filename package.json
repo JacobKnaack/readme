@@ -1,30 +1,40 @@
 {
-  "name": "readme",
+  "name": "readme-gatsby",
   "version": "1.0.0",
-  "description": "A public facing project for expressing developer thoughts and ideas around web development",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "private": true,
+  "description": "readme-gatsby",
+  "author": "JacobKnaack",
+  "keywords": [
+    "gatsby"
+  ],
   "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
     "test": "jest --verbose --coverage",
     "test:watch": "jest --watchAll"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JacobKnaack/readme.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JacobKnaack/readme/issues"
-  },
-  "homepage": "https://github.com/JacobKnaack/readme#readme",
   "dependencies": {
     "aws-sdk": "^2.1073.0",
     "dotenv": "^16.0.0",
-    "jest": "^27.5.1",
+    "gatsby": "^4.7.1",
+    "gatsby-plugin-image": "^2.7.0",
+    "gatsby-plugin-react-helmet": "^5.7.0",
+    "gatsby-plugin-sass": "^5.7.0",
+    "gatsby-plugin-sharp": "^4.7.0",
+    "gatsby-plugin-sitemap": "^5.7.0",
+    "gatsby-source-filesystem": "^4.7.0",
+    "gatsby-transformer-sharp": "^4.7.0",
+    "html-react-parser": "^1.4.8",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.49.7",
     "showdown": "^2.0.0-alpha"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }

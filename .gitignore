@@ -59,4 +59,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# test assets
 asset/**/*.test
+
+# gatsby
+.cache
+public
