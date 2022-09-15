@@ -22,10 +22,10 @@ exports.onCreatePage = async ({ page }) => {
       }
 
       let articles = JSON.parse(text).reduce((list, article) => {
-        let pathData = path.parse(article.key);
-        let dir = pathData.dir ? pathData.dir + '/' : '';
-        if (pathData.ext === '.md') {
-          return [...list, { ...article, key: `${dir}${pathData.name}` }];
+        let { dir, name, ext } = path.parse(article.key);
+        dir = dir ? dir + '/' : '';
+        if (ext === '.md') {
+          return [...list, { ...article, key: `${dir}${name}` }];
         } else {
           return list;
         }
