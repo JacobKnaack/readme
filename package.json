@@ -28,6 +28,7 @@
     "gatsby-source-filesystem": "^4.7.0",
     "gatsby-transformer-sharp": "^4.7.0",
     "html-react-parser": "^1.4.8",
+    "js-markdown-document": "^1.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
