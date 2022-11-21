@@ -1,0 +1,85 @@
+.app-bar {
+  height: 50px;
+  width: calc(100% - 32px);
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+
+  .title {
+    height: 100%;
+    padding: 0 20px 0 20px;
+    margin: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .heading {
+      font-size: 20px;
+      font-family: 'Comfortaa', cursive;
+    }
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    .nav-item {
+      margin: 8px;
+      padding: 8px;
+    }
+  }
+  .search {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    top: calc(50px + 32px);
+    left: 0;
+    overflow: hidden;
+    background-color: white;
+  }
+
+  .search.hidden {
+    height: 0;
+    transition: 0.5s ease-in-out;
+  }
+
+  .search.visible {
+    height: 75px;
+    transition: 0.5s ease-in-out;
+  }
+ }
+
+ .text-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .user-input {
+    height: 75%;
+    width: 80%;
+    background-color: #e9e9e9;
+    border: none;
+    border-radius: 10px;
+    margin: 0 8px;
+    line-height: 75%;
+    font-size: 30px;
+  }
+}
+
+
+
+
+

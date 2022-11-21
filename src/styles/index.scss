@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
 html, body {
   width: 100vw;
   margin: 0;
-  background-color: #7EAFA5;
 }
 
 .displayName {
@@ -20,20 +21,6 @@ p {
 
 #home-container {
   width: 100%;
-}
-
-.heading {
-  text-align: center;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #ffffff;
-}
-
-.heading h1 {
-  height: 75px;
-  line-height: 75px;
 }
 
 #submissionList {
@@ -66,7 +53,7 @@ p {
 }
 
 a {
-  font-family: 'Share Tech Mono', monospace; 
+  font-family: 'Share Tech Mono', monospace;
   color: #ffffff;
   font-size: 150%;
   text-align: left;

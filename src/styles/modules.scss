@@ -1,0 +1,32 @@
+.text-btn {
+  height: 30px;
+  padding: 8px;
+  background: none;
+  border: none;
+}
+
+.text-btn:hover, .icon-btn:hover {
+  color: lightblue;
+}
+
+.text-btn:active, .icon-btn:active {
+  color: #7EAFA5;
+}
+
+.icon-btn {
+  width: 30px;
+  height: 30px;
+}
+
+.profile-image {
+  border-radius: 250px;
+  overflow: hidden;
+}
+
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
