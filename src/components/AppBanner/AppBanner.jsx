@@ -1,26 +1,36 @@
 import React from 'react';
-import Image from '../Image/Image';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import ProfilePic from '../../images/portrait.png';
+import Image from '../../atoms/Image/Image';
+import IconButton from '../../atoms/IconButton/IconButton';
 import '../../styles/appBanner.scss';
-
-export default function AppBanner() {
+/**
+ *
+ * @prop {title} String - title text
+ * @prop {text} String - description text
+ * @prop {Action} [{ Image / Icon, OnClick }]
+ */
+export default function AppBanner({ title, text, actions}) {
   return (
     <div id="app-banner">
       <div className="container row">
-        {/* Use Image Component */}
         <div className="profile-image">
           <Image
-            src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+            src={ProfilePic}
             alt="profile placeholder"
-            size='m'
+            size='l'
           />
         </div>
         <div className="container column">
-          <p className="title">My Blog</p>
-          <p className="text">Longer form description text</p>
+          <p className="title">{title}</p>
+          <p className="text">{text}</p>
           <div className="actions">
-            <p>ICON</p>
-            <p>ICON</p>
-            <p>ICON</p>
+            <IconButton size="m">
+              <FaGithub style={{ width: '250px', height: '25px' }} />
+            </IconButton>
+            <IconButton size="m">
+              <FaLinkedin style={{ width: '25px', height: '25px' }} />
+            </IconButton>
           </div>
         </div>
       </div>

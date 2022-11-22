@@ -1,5 +1,7 @@
 import * as React from 'react';
 import parse from 'html-react-parser';
+import AppBar from '../components/AppBar/AppBar';
+import Footer from '../components/Footer/Footer';
 import '../styles/article.scss';
 
 /**
@@ -9,7 +11,11 @@ import '../styles/article.scss';
 function Article({ pageContext }) {
   return (
     <div id="article-container">
-      {parse(pageContext.html)}
+      <main id="article-content">
+        <AppBar />
+        {parse(pageContext.html)}
+      </main>
+      <Footer />
     </div>
   )
 }

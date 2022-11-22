@@ -7,13 +7,13 @@ export default function Image({ src, alt, size }) {
       case 's':
         return '20px';
       case 'm':
-        return '30px';
+        return '100px';
       case 'l':
-        return '40px';
+        return '200px';
       case 'xl':
-        return '50px';
+        return '500px';
       default:
-        return '60px';
+        return '900px';
     }
   }
 

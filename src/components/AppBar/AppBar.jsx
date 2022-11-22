@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import SearchIcon from '../../images/search_icon.svg';
-import Image from '../Image/Image';
+import { FaSearch } from 'react-icons/fa';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import IconButton from '../../atoms/IconButton/IconButton';
 import '../../styles/appBar.scss';
 
 export default function AppBar() {
@@ -11,10 +12,19 @@ export default function AppBar() {
     setOpen(!open);
   }
 
+  /**
+   * TODO
+   *  handle search features
+   *  configure links
+   *  add Nav Item component??
+   * */
+
   return (
     <section className="app-bar">
       <div className="title">
-        <h1 className="heading">README</h1>
+        <h1 className="heading">
+          READ<span className="splash">ME</span>
+          </h1>
       </div>
       <div className="nav-menu">
         <div className=" nav-item">
@@ -27,13 +37,15 @@ export default function AppBar() {
           <button className="text-btn">Contact</button>
         </div>
         <div onClick={toggleSearch} className="icon-btn nav-item">
-          <Image src={SearchIcon} alt="Search" />
+          <FaSearch />
         </div>
       </div>
       <div className={`search ${open ? 'visible' : 'hidden'}`}>
         <form className="text-input">
           <input className="user-input" type="text" />
-          <div className="icon-btn">ICON</div>
+          <IconButton size="m" onClick={toggleSearch}>
+            <AiOutlineCloseCircle style={{ width: '40px', height: '40px'}} />
+          </IconButton>
         </form>
       </div>
     </section>

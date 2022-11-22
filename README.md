@@ -6,17 +6,14 @@ A public facing project for expressing developer thoughts and ideas around web d
 
 1. __Start developing.__
 
-    Navigate into your new site’s directory and start it up.
-
     ```shell
-    cd my-gatsby-site/
+    cd readme/
     npm run develop
     ```
 
 1. __Open the code and start customizing!__
 
     Your site is now running at <http://localhost:8000>!
-
     Edit `src/pages/index.js` to see your site update in real-time!
 
 1. __Learn more__
