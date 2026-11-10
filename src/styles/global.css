@@ -9,6 +9,10 @@
   --link: #2a47c9;
   --marker: #ffe066;
   --code-bg: #22272e; /* matches github-dark-dimmed */
+  --code-header-bg: #2d333b;
+  --code-rule: #444c56;
+  --code-ink: #cdd9e5;
+  --code-muted: #909dab;
   --inline-code-bg: #e4e8ee;
 
   --font-head: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
@@ -427,18 +431,85 @@ kbd {
   font-size: 0.86em;
   overflow-wrap: anywhere;
 }
-.prose pre {
+/* Code blocks: see src/plugins/code-block.mjs and src/components/CodeBlock.astro */
+.code-block {
+  position: relative;
   margin: 1.75rem 0 2rem;
-  padding: 1.1rem 1.25rem;
   border-radius: 8px;
+  background: var(--code-bg);
+  overflow: hidden;
+}
+/* A block right after a list item or paragraph inside a list sits a little closer */
+li > .code-block {
+  margin: 0.75rem 0 1rem;
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 0.5rem 0 1.25rem;
+  background: var(--code-header-bg);
+  border-bottom: 1px solid var(--code-rule);
+}
+.code-block-filename {
+  font-family: var(--font-code);
+  font-size: 0.8125rem;
+  color: var(--code-ink);
+  overflow-wrap: anywhere;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1.1rem 1.25rem;
   background: var(--code-bg) !important;
   font-size: 0.875rem;
   line-height: 1.6;
   overflow-x: auto;
   tab-size: 2;
+  scrollbar-color: var(--code-rule) transparent;
 }
-.prose pre code {
+.code-block pre code {
   font-size: inherit;
+}
+
+.code-copy {
+  margin-left: auto;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--code-rule);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--code-muted);
+  font: 500 0.75rem var(--font-head);
+  cursor: pointer;
+}
+.code-copy:hover {
+  color: var(--code-ink);
+  border-color: var(--code-muted);
+}
+.code-copy:focus-visible {
+  outline-color: var(--code-ink);
+}
+.code-copy[data-copied] {
+  color: var(--code-ink);
+}
+/* Blocks without a filename: the button floats in the corner, shown on hover or focus */
+.code-block:not(.has-filename) .code-copy {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: var(--code-header-bg);
+  opacity: 0;
+}
+.code-block:not(.has-filename):hover .code-copy,
+.code-block:not(.has-filename) .code-copy:focus-visible,
+.code-block:not(.has-filename) .code-copy[data-copied] {
+  opacity: 1;
+}
+@media (hover: none) {
+  .code-block:not(.has-filename) .code-copy {
+    opacity: 1;
+  }
 }
 
 /* Footer pager under the article */

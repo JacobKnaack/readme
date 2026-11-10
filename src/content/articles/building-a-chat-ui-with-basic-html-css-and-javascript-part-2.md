@@ -10,25 +10,19 @@ In the last tutorial we created a template, styled it, mocked some data and appe
 
 - A function that selects a conversation when a name in the conversations list is clicked:
 
-  **`chat.js`**
-
-  ```js
+  ```js title="chat.js"
   function selectConversation()
   ```
 
 - A function for adding a message to our displayed message list:
 
-  **`chat.js`**
-
-  ```js
+  ```js title="chat.js"
   function displayMessage()
   ```
 
 - A function for sending a new message to our message list:
 
-  **`chat.js`**
-
-  ```js
+  ```js title="chat.js"
   function sendMessage()
   ```
 
@@ -44,9 +38,7 @@ We'll begin by opening up our javascript file and whiteboarding our solution.  B
 
 Let's start with our selectConversation function and define a goal for our javascript, I often like to use comments in my code to keep me on track:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 // 1) This function is run when a user clicks on a name in the conversationList,
 // 2) It defines who we are sending messages to and what messages are displayed in the messageList
 function selectConversation() { }
@@ -66,9 +58,7 @@ function selectConversation() {
 
 Before we turn those comments into code, we need two pieces of information our app doesn't have yet. Look back at the mocked messages from part 1: every message has a `from` and a `to`, and some of them are from `000`. That's us, the person using the app. Let's give that id a name, and make a place to remember which conversation is currently open. Add these two lines underneath the `messages` array:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 // The id that represents us, the person using the chat app.
 var currentUser = 0;
 
@@ -86,9 +76,7 @@ Let's take our comments one at a time.
 
 **Identify the conversation that is being clicked on.** The easiest way for our function to know which conversation was clicked is to be _told_. We'll give the function a parameter called `conversationId`, and whatever calls the function will pass in the id of the conversation. Then we save it in `selectedConversation` so the rest of our app knows who we are talking to:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 function selectConversation(conversationId) {
   // identify the conversation that is being clicked on.
   selectedConversation = conversationId;
@@ -97,9 +85,7 @@ function selectConversation(conversationId) {
 
 **Find messages associated with that identity.** A conversation with Mike is made of two kinds of messages: messages Mike sent to us, and messages we sent to Mike. Arrays in Javascript have a method called `filter` that does exactly this kind of job. It runs a function on every item in the array, and gives us back a new array with only the items where that function returned `true`:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 function selectConversation(conversationId) {
   // identify the conversation that is being clicked on.
   selectedConversation = conversationId;
@@ -131,9 +117,7 @@ This reads almost like a sentence: keep this message if it's _from them and to u
 
 **Return those messages.** When we wrote our pseudocode we said we'd return the messages, but think about who would be receiving them. This function is going to run when someone clicks on a name, and the browser doesn't do anything with a value returned from a click. What we really want is to _show_ those messages on the screen. So let's hand them to a new function that does just that:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
   // show those messages in the messageList.
   displayMessages(conversationMessages);
 }
@@ -147,9 +131,7 @@ That function doesn't exist yet, so let's write it.
 
 We need two small functions here. One that adds a **single** message to the messageList, and one that clears the messageList and adds a whole **list** of messages. Splitting them up is going to pay off later, because when we send a new message we only want to add that one message, not redraw everything.
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 // Empties the messageList, then adds each message in the list we pass in.
 function displayMessages(messageList) {
   document.getElementById('messageList').innerHTML = '';
@@ -216,9 +198,7 @@ Now we have a function that shows a conversation, but nothing calls it yet. We n
 
 Let's go back to the loop from part 1 that adds conversations to the menu, and rebuild it with `createElement` so we can listen for clicks on each item. **Delete both of the `for` loops from part 1**, the one for conversations and the one for messages, and replace them with this function:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 // Builds one menu item for every conversation and listens for clicks on it.
 function displayConversations() {
   var conversationList = document.getElementById('conversations');
@@ -263,9 +243,7 @@ _// You might wonder why we don't just use `conversations[item].id` inside the c
 
 There's one more thing our user needs: some way to see which conversation is open. Let's add a step to `selectConversation` that gives the clicked menu item a class of `active` and takes it away from all the others:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 function selectConversation(conversationId) {
   // identify the conversation that is being clicked on.
   selectedConversation = conversationId;
@@ -295,9 +273,7 @@ function selectConversation(conversationId) {
 
 Last of all, we need to actually run these functions when the page loads. At the very bottom of **chat.js**, build the menu and open the first conversation so the screen isn't empty:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 displayConversations();
 selectConversation(conversations[0].id);
 ```
@@ -316,9 +292,7 @@ Click on Suzzane, and the messageList switches over to her conversation:
 
 The last feature on our list is the input at the bottom of the screen. In part 1 we made an empty `messageInput` box, so let's put a form inside it with a text field and a send button:
 
-**`index.html`**
-
-```html
+```html title="index.html"
 <div id='messageInput'>
   <form id='messageForm'>
     <input id='messageText' type='text' placeholder='Type a message' autocomplete='off'>
@@ -336,9 +310,7 @@ Now our whiteboarding process again. When the form is submitted, we want to:
 3) Add it to our `messages` array, so it's still there if we switch conversations and come back.
 4) Show it in the messageList, and empty the text field.
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 // Runs when the message form is submitted, by clicking Send or pressing Enter.
 function sendMessage(event) {
   // stop the browser from reloading the page.
@@ -399,9 +371,7 @@ Try typing a message and pressing Enter, then click on the other conversation an
 
 Our functions work, but we've added some classes that don't have any styling yet: `active`, `sent`, `received`, and our new form. Here are the updated and new blocks for **style.css**. Replace the matching blocks from part 1 with these:
 
-**`style.css`**
-
-```css
+```css title="style.css"
 body, html {
   height: 100vh;
   width: 100vw;
@@ -555,9 +525,7 @@ Our Chat UI now responds to the person using it. Let's look back at what we did:
 
 Here's the complete **chat.js** file, so you can check yours against it:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 var conversations = [
   {
     'id': 001,

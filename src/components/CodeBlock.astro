@@ -1,0 +1,20 @@
+---
+/**
+ * A highlighted code block with an optional filename header.
+ * Renders the same markup as a markdown fence written as ```js title="chat.js".
+ *
+ * <CodeBlock code={source} lang="js" filename="chat.js" />
+ */
+import { Code } from 'astro:components';
+import { CODE_THEME, codeBlock } from '../plugins/code-block.mjs';
+
+interface Props {
+  code: string;
+  lang?: string;
+  filename?: string;
+}
+
+const { code, lang = 'plaintext', filename } = Astro.props;
+---
+
+<Code code={code} lang={lang as any} theme={CODE_THEME} transformers={[codeBlock({ filename })]} />

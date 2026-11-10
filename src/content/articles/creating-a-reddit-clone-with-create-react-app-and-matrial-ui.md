@@ -61,9 +61,7 @@ We are now ready to open up our text editor and begin building our App!
 
 Open up the project directory in your text editor and find `App.js` in the `src` directory. You will see these lines:
 
-**`App.js`**
-
-```js
+```js title="App.js"
 import React, { Component } from 'react'; 
 import logo from './logo.svg';
 import './App.css';
@@ -100,9 +98,7 @@ In order to make use of this data we'll have to modify our App.js component. We 
 
 Let's go back to `App.js` and initialize our component with a constructor and `this.state`:
 
-**`App.js`**
-
-```js
+```js title="App.js"
 import React, { Component } from 'react'; 
 import logo from './logo.svg';
 import './App.css';
@@ -120,9 +116,7 @@ _// This constructor is used to intialize our component with data before it rend
 
 Now let's add a component lifecycle function to fetch our reddit data from reddit.com:
 
-**`App.js`**
-
-```js
+```js title="App.js"
 import React, { Component } from 'react'; 
 import logo from './logo.svg';
 import './App.css';
@@ -171,9 +165,7 @@ npm install --save material-ui
 
 This will install material-ui components to our projects dependencies and allow us to use them in our jsx. Let's import this libray of code into our App and configure our component to be able to use material-ui themes:
 
-**`App.js`**
-
-```js
+```js title="App.js"
 import React, { Component } from 'react'; 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import logo from './logo.svg';
@@ -217,9 +209,7 @@ _// You can see that we added an import statement on line 2 and wrapped our jsx 
 
 Now let's create a React component that will render our post data stored in `this.state`. We'll start by creating a folder within the `src` directory called `components`. Then we will create a file called `Post.js`. Initialize the component with this code:
 
-**`/components/Post.js`**
-
-```js
+```js title="/components/Post.js"
 import React from 'react'
 import Avatar from 'material-ui/Avatar'
 import FlatButton from 'material-ui/FlatButton'
@@ -238,9 +228,7 @@ _// Unlike our app component we don't define a class that is a React.Component. 
 
 With our Post component created we can import it into `App.js` and pass in our post data:
 
-**`App.js`**
-
-```js
+```js title="App.js"
 import React, { Component } from 'react'; 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Post from './components/Post';
@@ -305,9 +293,7 @@ At this point we are looping through our state array with a `.map` method and cr
 
 Now let's use material-ui to render our post data:
 
-**`/components/Post.js`**
-
-```js
+```js title="/components/Post.js"
 import React from 'react';
 import Avatar from 'material-ui/Avatar';
 import FlatButton from 'material-ui/FlatButton';

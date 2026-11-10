@@ -61,9 +61,7 @@ With those files created, open up the HTML file in whatever text editor you like
 
 Here is the boilerplate html code we want to start out with:
 
-**`index.html`**
-
-```html
+```html title="index.html"
 <!DOCTYPE html> 
 <html> 
   <head> 
@@ -85,9 +83,7 @@ When we begin putting HTML in the body of the document, we must think about each
 
 The first box we want to define is the box that will hold our **Conversations**:
 
-**`index.html`**
-
-```html
+```html title="index.html"
 <body>
   <div id='conversations'> 
 
@@ -99,9 +95,7 @@ This will be the left most area of the screen, and will span the full height of 
 
 Let's open up our **style.css** file and add the styling we want to make this menu appear how we see in prototype:
 
-**`style.css`**
-
-```css
+```css title="style.css"
 body, html {
   height: 100vh;
   width: 100vw;
@@ -122,9 +116,7 @@ _// The first CSS block takes away any default margin given to the html and body
 
 Let's test this out by adding a line to our **index.html** file so that it looks for our css file:
 
-**`index.html`**
-
-```html
+```html title="index.html"
   <head> 
    <meta charset='UTF-8'> 
    <meta name='viewport' content='width=device-width, initial-scale=1.0'> 
@@ -139,9 +131,7 @@ When you open up your html file in a Browser, you should see a 200 pixel wide bo
 
 Nice! Now lets add some more HTML to make a box for the main section of our chat application: the messageList and the messageInput:
 
-**`index.html`**
-
-```html
+```html title="index.html"
 <body>
   <div id='conversations'> 
 
@@ -166,9 +156,7 @@ _// The first div will serve as a container for the messages and input. This way
 
 Now let's modify our **style.css** file and give these elements the structure they need to display content properly:
 
-**`style.css`**
-
-```css
+```css title="style.css"
 #conversations {
   position: relative;
   top: 0;
@@ -234,9 +222,7 @@ What do I mean by Mocked Data? This is essentially some data that will mimic rea
 
 Lets create some Javascript objects that will serve as data models being requested from a chat database. Open up the **chat.js** file and create our objects:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 var conversations = [
   {
     'id': 001,
@@ -284,9 +270,7 @@ _// We have created two arrays for now. The first will serve as a a data structu
 
 With this in place we can continue on and create our first piece of Javascript logic that will append the conversation information properly to our conversations menu:
 
-**`chat.js`**
-
-```js
+```js title="chat.js"
 for (var item in conversations) {
   document.getElementById('conversations').innerHTML +=
     '<div class="conversationMenuItem">' +
@@ -297,9 +281,7 @@ for (var item in conversations) {
 
 Let's add a script tag linking this Javascript file to our HTML file:
 
-**`index.html`**
-
-```html
+```html title="index.html"
 <!DOCTYPE html> 
 <html> 
   <head> 
@@ -367,9 +349,7 @@ Now we should see all of our messages placed in our messageList element in the m
 
 Great! Now the last thing we'll do is add a little bit of CSS to style these messages. let's make our element classes look more like our prototype:
 
-**`style.css`**
-
-```css
+```css title="style.css"
 #conversations {
   position: relative;
   top: 0;

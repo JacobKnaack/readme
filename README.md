@@ -25,6 +25,16 @@ date: 2026-01-31
 ---
 ```
 
+To label a code block with its filename, add `title` to the fence:
+
+````md
+```js title="chat.js"
+console.log('hello');
+```
+````
+
+In `.astro` files, use the component instead: `<CodeBlock code={source} lang="js" filename="chat.js" />`.
+
 The filename becomes the URL slug. Images go in `public/images/articles/<article-slug>/` and are referenced as `/readme/images/articles/<article-slug>/...`.
 
 ## Deployment
