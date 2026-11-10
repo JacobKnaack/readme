@@ -1,0 +1,96 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const articles = (await getCollection('articles')).sort(
+    (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
+  );
+  return articles.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, prev: articles[i - 1], next: articles[i + 1] },
+  }));
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content, headings } = await render(entry);
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const date = entry.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<Base title={`${entry.data.title} | README`} description={entry.data.description}>
+  <Fragment slot="sidebar">
+    <a class="home-link" href={`${base}/`}>All articles</a>
+
+    {
+      toc.length > 0 && (
+        <div class="toc">
+          <h2 class="sidebar-heading">On this page</h2>
+          <ol>
+            <li class="toc-top">
+              <a href="#top">{entry.data.title}</a>
+            </li>
+            {toc.map((h) => (
+              <li class={`depth-${h.depth}`}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )
+    }
+
+    {
+      (prev || next) && (
+        <div class="pager">
+          {prev && (
+            <a href={`${base}/articles/${prev.id}/`} rel="prev">
+              <span class="pager-dir">Previous</span>
+              {prev.data.title}
+            </a>
+          )}
+          {next && (
+            <a href={`${base}/articles/${next.id}/`} rel="next">
+              <span class="pager-dir">Next</span>
+              {next.data.title}
+            </a>
+          )}
+        </div>
+      )
+    }
+  </Fragment>
+
+  <article class="prose">
+    <header class="article-header" id="top">
+      <time datetime={entry.data.date.toISOString()}>{date}</time>
+      <h1>{entry.data.title}</h1>
+      <p class="lede">{entry.data.description}</p>
+    </header>
+    <Content />
+  </article>
+
+  <nav class="article-footer" aria-label="More articles">
+    {
+      prev && (
+        <a href={`${base}/articles/${prev.id}/`} rel="prev">
+          <span class="pager-dir">Previous</span>
+          {prev.data.title}
+        </a>
+      )
+    }
+    {
+      next && (
+        <a class="is-next" href={`${base}/articles/${next.id}/`} rel="next">
+          <span class="pager-dir">Next</span>
+          {next.data.title}
+        </a>
+      )
+    }
+  </nav>
+</Base>

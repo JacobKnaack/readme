@@ -1,0 +1,138 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {description && <meta name="description" content={description} />}
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Schibsted+Grotesk:wght@500;700;900&display=swap"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <a class="wordmark" href={`${base}/`} aria-label="README, home">README</a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sidebar-nav">
+            Contents
+          </button>
+        </div>
+        <nav id="sidebar-nav" class="sidebar-nav" aria-label="Site">
+          <slot name="sidebar" />
+        </nav>
+      </aside>
+      <main id="content" class="content">
+        <slot />
+      </main>
+    </div>
+
+    <script>
+      // Mobile: open/close the sidebar menu.
+      const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+      const nav = document.getElementById('sidebar-nav');
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!open));
+        nav?.classList.toggle('is-open', !open);
+      });
+      nav?.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).closest('a') && toggle?.getAttribute('aria-expanded') === 'true') {
+          toggle.click();
+        }
+      });
+
+      // Add a copy button to every code block.
+      const copyText = async (text: string) => {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          // Fallback for browsers or embedded views that block the Clipboard API.
+          const area = document.createElement('textarea');
+          area.value = text;
+          area.setAttribute('readonly', '');
+          area.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+          document.body.appendChild(area);
+          area.select();
+          const ok = document.execCommand('copy');
+          area.remove();
+          if (!ok) throw new Error('Copy failed');
+        }
+      };
+      document.querySelectorAll<HTMLElement>('.code-block').forEach((block) => {
+        const pre = block.querySelector('pre');
+        if (!pre) return;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'code-copy';
+        button.textContent = 'Copy';
+        const name = block.querySelector('.code-block-filename')?.textContent;
+        button.setAttribute('aria-label', name ? `Copy ${name}` : 'Copy code');
+        let timer: number | undefined;
+        button.addEventListener('click', async () => {
+          try {
+            await copyText(pre.innerText.replace(/\n$/, ''));
+            button.textContent = 'Copied';
+            button.setAttribute('data-copied', '');
+          } catch {
+            button.textContent = 'Copy failed';
+          }
+          clearTimeout(timer);
+          timer = window.setTimeout(() => {
+            button.textContent = 'Copy';
+            button.removeAttribute('data-copied');
+          }, 2000);
+        });
+        (block.querySelector('.code-block-header') ?? block).appendChild(button);
+      });
+
+      // Highlight the table-of-contents entry for the section being read.
+      const tocLinks = [...document.querySelectorAll<HTMLAnchorElement>('.toc a[href^="#"]')];
+      if (tocLinks.length) {
+        const byId = new Map(tocLinks.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+        const headings = [...byId.keys()]
+          .map((id) => document.getElementById(id))
+          .filter((el): el is HTMLElement => !!el);
+        const setActive = () => {
+          const line = window.innerHeight * 0.25;
+          let current: HTMLElement | undefined;
+          for (const h of headings) {
+            if (h.getBoundingClientRect().top <= line) current = h;
+            else break;
+          }
+          tocLinks.forEach((a) => a.removeAttribute('aria-current'));
+          if (current) byId.get(current.id)?.setAttribute('aria-current', 'location');
+        };
+        let ticking = false;
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+              setActive();
+              ticking = false;
+            });
+          },
+          { passive: true },
+        );
+        setActive();
+      }
+    </script>
+  </body>
+</html>
