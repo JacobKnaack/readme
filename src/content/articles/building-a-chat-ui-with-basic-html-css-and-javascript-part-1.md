@@ -72,7 +72,7 @@ Here is the boilerplate html code we want to start out with:
   </head> 
   <body>
   </body>
-<html>
+</html>
 ```
 
 _// The two meta lines add some information for the Browser, letting it know that we are using UFT 8 character encoding for the HTML document, and making the content responsive to the device screen._
@@ -176,7 +176,7 @@ Now let's modify our **style.css** file and give these elements the structure th
   width: 200px;
   height: 100vh;
   background-color: #E9E8F8;
-  float; left;
+  float: left;
 }
 
 #messageContainer {
@@ -288,12 +288,10 @@ With this in place we can continue on and create our first piece of Javascript l
 
 ```js
 for (var item in conversations) {
-  document.getElementById('conversations').innerHTML += '
-     <div class='conversationMenuItem'>
-      <h3 class='conversationName'>
-      '+ conversations[item].name +'
-      </h3>
-    </div>'
+  document.getElementById('conversations').innerHTML +=
+    '<div class="conversationMenuItem">' +
+      '<h3 class="conversationName">' + conversations[item].name + '</h3>' +
+    '</div>';
 }
 ```
 
@@ -307,6 +305,7 @@ Let's add a script tag linking this Javascript file to our HTML file:
   <head> 
     <meta charset='UTF-8'> 
     <meta name='viewport' content='width=device-width, initial-scale=1.0'> 
+    <link rel='stylesheet' href='style.css'>
   </head> 
   <body>
   <div id='conversations'> 
@@ -320,10 +319,10 @@ Let's add a script tag linking this Javascript file to our HTML file:
 
     </div>
   </div> 
-  </body>
-<!-- Add this at the bottom of the document or in the head -->
+<!-- Add this at the bottom of the body, so the elements exist before our script runs -->
   <script src='./chat.js'></script>
-<html>
+  </body>
+</html>
 ```
 
 Now when we open up our index.html document in the Browser we should see this:
@@ -339,26 +338,24 @@ for (var item in conversations) {
 this is the beginning of a for loop which is being told to loop through the conversations array, and each index of that array is represented by a variable declared as item.
 
 ```js
-  document.getElementById('conversations').innerHTML += '
-    <div class='conversationMenuItem'>
-     <h3 class='conversationName'>
-     '+ conversations[item].name +'
-     </h3>
-   </div>'
+  document.getElementById('conversations').innerHTML +=
+    '<div class="conversationMenuItem">' +
+      '<h3 class="conversationName">' + conversations[item].name + '</h3>' +
+    '</div>';
 ```
 
 in the body of the for loop, we are calling a method on the [Document Object Model.](https://www.w3schools.com/js/js_htmldom.asp) The method getElementById grabs an html element with the id name that matches the string provided between parentheses. For each item in the conversations array, we grab the conversations div element, and add some HTML into the div element itself. In this case we are adding another div with an h3 within.
+
+_// A string in single quotes has to start and end on the same line, so we build our HTML out of several smaller strings and join them together with `+`. Inside those strings we use double quotes for the class names; a single quote there would end the string early._
 
 Let's do the same thing for the messages array:
 
 ```js
 for (var item in messages) {
-  document.getElementById('messageList').innerHTML += '
-    <div class='messageItem'>
-      <p class='messageText'>
-      '+ messages[item].text +'
-      </p>
-    </div>'
+  document.getElementById('messageList').innerHTML +=
+    '<div class="messageItem">' +
+      '<p class="messageText">' + messages[item].text + '</p>' +
+    '</div>';
 }
 ```
 
@@ -370,7 +367,7 @@ Now we should see all of our messages placed in our messageList element in the m
 
 Great! Now the last thing we'll do is add a little bit of CSS to style these messages. let's make our element classes look more like our prototype:
 
-**`stlye.css`**
+**`style.css`**
 
 ```css
 #conversations {
@@ -380,7 +377,7 @@ Great! Now the last thing we'll do is add a little bit of CSS to style these mes
   width: 200px;
   height: 100vh;
   background-color: #E9E8F8;
-  float; left;
+  float: left;
 }
 
 /* center our text in the Conversations Menu */
@@ -411,7 +408,7 @@ Great! Now the last thing we'll do is add a little bit of CSS to style these mes
  so that it aligns properly in the messageList and displays nicely */
 .messageItem {
   height: 40px;
-  width: 50 %;
+  width: 50%;
   margin: 0 auto;
 }
 
